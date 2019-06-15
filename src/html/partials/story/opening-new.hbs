@@ -1,0 +1,40 @@
+<div class="card-persona" id='all_opening'>
+    <a href="#all_opening" id="opening_not_link" class="card--btn btn--primary overline " data-next ='Gianni-1' >
+        <p class="btn__p">THE IMMIGRANT EXPERIENCE</p>
+    </a>
+
+    <h1 class="opening__title title__game">{{copy.hed}}</h1>
+
+    <div class="opening__deck">
+        <p class="center__p">
+            {{copy.dek}}
+        </p>
+        <div class="address">
+        <p class="opening-byline">{{{copy.byline}}}</p>
+        <p class="opening-byline">Read more about the <a href="#methodology" class="method">project methodology and team</a>.</p>
+        </div>
+    </div>
+    <!--<div class="address">-->
+            <!--</div>-->
+{{#each copy.connections}}
+    {{#each opening}}
+
+        <div class="opening-icon character">
+            <div class="select__div">
+                <a href="#{{next}}"><img class="opening--img" src="{{img}}"></a>
+            </div>
+            <div class="description-box">
+                <a href="#{{next}}"><p class="desp-name">{{name}}</p>
+                <p class="desp-desp">{{description}}</p></a>
+                {{#each btn}}
+                    <a href="#{{next}}" class="opening--btn btn--secondary overline" data-next ={{next}} >
+                        <p class="btn__p">{{text}}</p>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    {{/each}}
+{{/each}}
+    <div class="pubdate"><p><em>{{copy.pubDate}}</em></p></div>
+
+</div>

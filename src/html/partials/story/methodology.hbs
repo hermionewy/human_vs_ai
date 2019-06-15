@@ -1,0 +1,31 @@
+<div class="card-persona" id='methodology' hidden>
+    <div class="center_btn">
+        <a href="#all_opening" class="card--btn btn--primary overline " data-next ='all_opening' >
+            <p class="btn__p">THE IMMIGRANT EXPERIENCE</p>
+        </a>
+    </div>
+
+    {{#each copy.connections}}
+        {{#each methodology}}
+            <h1 class="opening__title title__game">{{hed}}</h1>
+            {{#each textStart}}
+                <p class="center__p">{{{value}}}</p>
+            {{/each}}
+            {{#each methPersona}}
+                <div>
+                    <img class="meth_img" src="{{img}}">
+                    <p class="center__p">{{{intro}}}</p>
+                </div>
+            {{/each}}
+            {{#each textEnd}}
+                <p class="center__p">{{{value}}}</p>
+            {{/each}}
+        {{/each}}
+    {{/each}}
+    <div class="pubdate"><p><em>{{copy.pubDate}}</em></p></div>
+    <div class="author-bio">
+        {{#each copy.authorBio}}
+            <p>{{{value}}}</p>
+        {{/each}}
+    </div>
+</div>

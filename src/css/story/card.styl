@@ -1,0 +1,176 @@
+.card-sci
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  justify-items center
+  align-items center
+  font-family $font-family-moderat
+  //height 100vh
+  height calc( 100% - 73px )
+
+  +mq('bp-4')
+    flex-direction: row
+  .card-sci-title, .card-sci-btn-container
+    text-align center
+    align-items center
+    display flex
+    justify-content center
+    +mq('bp-4')
+      flex 1
+      min-height 80vh
+
+  .card-sci-title
+    flex 2
+    .title
+      font-family $font-family-grifo-bold
+      set-type-size('xxxx-large', true)
+      //margin auto
+      +mq('bp-5')
+        set-type-size('xxxx-large', true)
+
+  .card-sci-btn-container
+    flex 1
+    .card-sci-btn
+      min-width 15rem
+      & p
+        set-type-size('medium', true)
+
+  .card-sci__left, .card-sci__right
+    width 100%
+    min-height 30vh
+    text-align center
+    +mq('bp-4')
+      width 50%
+      min-height 40vh
+    +mq('bp-5')
+      min-height 45vh
+
+  .card-sci__right
+    padding 0rem 2rem
+    max-width $column-width
+    .card--btn
+      min-width 8rem
+    .card-sci__title
+      set-type-size('medium', true)
+      color $icon-color
+
+  .card-sci__left
+    .card-sci-img
+      object-fit cover
+      object-position 50% 50%
+      margin-bottom 0px
+
+  .title__game
+    font-family $font-family-grifo-bold
+
+  .hero__media
+    width 100%
+    display inline
+    padding 0
+    +mq('bp-4')
+      width 50%
+      margin auto 0
+    +mq('bp-5')
+      width 50%
+      display block
+
+
+    & img
+      width auto
+      margin auto
+      max-height 70vh
+
+      +mq('bp-5')
+        //width 100%
+        //max-width 80%
+        height auto
+        max-height 72vh
+
+      +mq('bp-6')
+        min-width 70%
+        max-width 85%
+        width auto
+        height auto
+        max-height 80vh
+
+  .hero__content
+    display inline
+    flex-direction: column;
+    text-align center
+    max-width 24rem
+    margin 0 auto 6vh auto
+    set-type-size('small', true)
+    +mq('bp-4')
+      margin auto
+      max-width 30rem
+      set-type-size('root', true)
+      //width 50%
+      //display block
+    +mq('bp-5')
+      width 50%
+      max-width 33rem
+      display block
+      //set-type-size('medium', true)
+
+    & .card__content p span
+      font-size 1rem
+      font-weight $font-weight-bold
+      font-family $font-family-moderat
+
+
+
+  .hero__inner
+    text-align: center;
+
+    > *
+      &:not(:last-child)
+        margin-bottom: $spacing-base;
+
+
+figure,
+picture,
+img {
+  height: auto
+  max-width 100%
+  margin-bottom 0.5rem
+}
+
+.hide-span
+  display none
+
+.slide-in
+  animation slide-in 0.5s ease-in
+
+@keyframes slide-in {
+  0% {
+    transform translateY(50%)
+    opacity 0.1
+  }
+  100% {
+    transform translateY(0%)
+    opacity 1
+  }
+}
+
+.share-note
+  text-align center
+  & p
+    font-size 0.9rem
+    font-weight 700
+    font-family $font-family-moderat
+
+.site-footer__social svg:hover
+  width 22px
+  height 22px
+  cursor pointer
+
+
+//article
+//  margin-bottom 2rem
+
+@-moz-document url-prefix() {
+  img:-moz-loading {
+    visibility: hidden;
+  }
+}

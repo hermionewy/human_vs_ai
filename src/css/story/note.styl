@@ -1,0 +1,71 @@
+sup
+  font-size: 100%;
+  line-height: inherit;
+  top: auto;
+  position: relative;
+  vertical-align: baseline;
+  background-image: linear-gradient(#f3f2ee, #f3f2ee);
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  background-size: 90% 100%;
+  counter-increment: sup;
+
+  &::after
+    background-color: #fdfdfc;
+    border: 1px solid #d5d2c4;
+    box-shadow: 3px 3px 0 0 #d5d2c4;
+    color: #e05b43;
+    content: counter(sup);
+    font-family: $font-family-moderat
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin: 0 0.5rem;
+    padding: 0 0.5rem;
+
+cite
+  width 8rem
+  padding 0.5rem
+  position absolute
+  bottom 2rem
+  right 1rem
+  font-size 0.875rem
+  text-align left
+  opacity 0
+  background-color rgba(255, 255, 255, 0.8)
+
+  &.showNote
+    opacity 0
+    +mq('bp-4')
+      opacity 1
+
+  &::before
+    color: $icon-color
+    content: counter(sup);
+    display: block;
+    font-family: $font-family-moderat
+    font-weight: $font-weight-bold;
+
+    +mq('bp-4')
+      border-bottom: 2px solid $bg-color-secondary;
+      margin-bottom: $spacing-small;
+
+p.show_cite
+  display block
+  font-size 0.875rem
+  text-align left
+  opacity 0
+
+  &.active
+    opacity 1
+
+  &::before
+    color: $icon-color
+    content: "1";
+    display: block;
+    font-family: $font-family-moderat
+    font-weight: $font-weight-bold;
+    border-bottom: 2px solid $bg-color-secondary;
+    margin-bottom: $spacing-small;
+
+  +mq('bp-4')
+    display none

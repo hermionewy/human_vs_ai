@@ -1,0 +1,113 @@
+.overline
+  display inline-table
+  font-family $font-family-moderat
+
+
+
+.opening--btn, .card--btn
+  cursor pointer
+  border: 0;
+  font-family: $font-family-sans;
+  font-weight: $font-weight-bold;
+  transition: $transition-base;
+
+.card-sci-start-btn
+  width 100%
+  flex 1
+  .btn__p
+    color $icon-color
+    text-align center
+    set-type-size('medium', true)
+  img
+    width 150px
+    height 150px
+    margin auto
+    +mq('bp-4')
+      width 200px
+      height 200px
+
+.btn--primary
+  background-color #e05b43
+  border 1px solid transparent
+  font-weight $font-weight-bold
+  color $white
+  padding 0.5rem
+  //letter-spacing 2px
+  margin auto
+
+  &:hover
+    background-color #fdfdfc
+    border-color #e05b43
+    box-shadow: 5px 5px 0 0 #e05b43
+    text-decoration none
+    color #333
+
+  & .btn__p
+    font-size 0.625rem
+    margin 0px
+    padding 0
+
+
+.btn--secondary
+  background-color $white
+  box-shadow 0 0 0 1px #e05b43
+  padding $spacing-small
+  font-weight 400
+  margin 0.5rem auto
+  max-width 90vw
+  margin-right 10px
+  border-radius 0.5rem
+  +mq('bp-3')
+    max-width 40vw
+
+  & .btn__p
+    font-size 0.8rem
+    margin 0px
+    line-height 1.15
+    color #333
+    padding 0
+    font-weight $font-weight-bold
+    display table-row
+    //+mq('bp-3')
+    //  font-size 0.75rem
+
+  &:hover
+    box-shadow: 5px 5px 0 0 #e05b43
+    text-decoration none
+    color #333
+    svg
+      fill: $text-color-base;
+
+.hero__content .btn--secondary
+  width 140px
+  border-radius 5px
+  +mq('bp-5')
+    width 170px
+
+.btn--icon
+  width 25px
+  height 25px
+  margin 6px auto 1px auto
+
+  +mq('bp-5')
+    width 30px
+    height 30px
+    margin 6px auto 3px auto
+
+
+#opening_not_link:hover
+  cursor default
+  background-color #e05b43
+  border 1px solid transparent
+  color $white
+  box-shadow 0 0 0 0px $white
+
+.description-box a
+  color $icon-color
+
+  &:hover
+    color $icon-color
+    text-decoration none
+
+.site-menu__btn.btn--secondary
+  border-radius 0px

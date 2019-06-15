@@ -1,0 +1,131 @@
+html
+  height 100vh
+  box-sizing: border-box;
+
+*, :after, :before
+  box-sizing inherit
+
+h1, h2
+  font-size 2.25rem
+  margin-bottom 1rem
+  line-height 1
+  +mq('bp-4')
+    font-size 3rem
+p
+  margin 0.5rem
+
+body
+  background-color: #fdfdfc;
+  color: #333;
+  padding: 0 0.5rem;
+  overflow-x hidden
+
+body::after
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: #f3f2ee 0 0 0 0.5rem inset;
+  content: "";
+  display: block;
+  pointer-events: none;
+
+#content
+  //position relative
+  //min-height calc(100vh - 73px)
+  display flex
+  height 100vh
+
+
+.icon-color
+  fill $icon-color
+
+.hide
+  display none
+
+.article
+  font-family "Georgia", "Times", "Times New Roman", serif
+  font-size 1rem
+  line-height 1.5
+  position relative
+  width 100%
+  margin-top 72px
+
+.img-desp
+  width 95%
+  margin 0px auto 1rem auto
+  +mq('bp-4')
+    text-align center
+  //margin 1rem auto
+
+.img__credit, .img__caption
+  width 100%
+  font-size 0.75rem
+  margin auto 0px
+  font-family: "Moderat", "Roboto", sans-serif;
+  +mq('bp-3')
+    margin 0 auto 0 auto
+
+
+.img__credit
+  font-style: normal;
+  text-transform: uppercase;
+
+.img__caption
+  font-size: 0.875rem;
+
+.displayNone
+  display none
+
+
+.description-box
+  text-align center
+  margin 0px
+  font-size x-small
+  & p
+    font-family Moderat
+    font-weight 400
+    font-size root
+    margin 0rem
+
+  & .desp-name
+    color $icon-color
+    font-weight $font-weight-bold
+
+
+
+
+
+@keyframes scale-display {
+  0% {
+    opacity: 0;
+    transform: translateY(0)
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(1000)
+  }
+}
+@keyframes scale-display--reversed {
+  0% {
+    display: flex;
+    opacity: 1;
+    transform: translateY(1000)
+  }
+  99% {
+    display: flex;
+    opacity: 0;
+    transform: translateY(0)
+  }
+  100% {
+    display: none;
+    opacity: 0;
+    transform: translateY(0)
+  }
+}
+
+span.year
+  letter-spacing -1.5px
+  color #9f9e98 !important
+  font-size 2rem

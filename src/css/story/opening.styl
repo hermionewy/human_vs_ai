@@ -1,0 +1,147 @@
+#all_opening
+  display flex
+  flex-direction row
+  flex-wrap wrap
+  margin-top 20vh
+  min-height 200vh
+  +mq('bp-3')
+    margin-top 12vh
+  +mq('bp-4')
+    margin-top 15vh
+    min-height 240vh
+
+  & .btn__p
+    font-size 0.75rem
+    font-weight $font-weight-bold
+
+.opening__title
+  width 100%
+  text-align center
+  margin 1.5rem auto
+  box-sizing content-box
+
+  +mq('bp-4')
+    padding 0px 25%
+    margin auto
+
+.opening__deck
+  width 100%
+  text-align center
+  width 100%
+
+  & .center__p
+    width 100%
+    margin auto
+    padding 0.5rem
+    +mq('bp-4')
+      width 50%
+
+
+.address
+  margin 1rem auto
+  width 90%
+  height auto
+  text-align center
+
+  & .opening-byline
+    width 100%
+    font-size .875rem
+    font-style normal
+    font-weight 700
+    font-family $font-family-moderat
+    margin auto
+    +mq('bp-4')
+      width 50%
+
+.opening-icon
+  min-height: 40px;
+  width: 50%;
+  display: inline-block;
+  padding 0.5rem
+
+  +mq('bp-3')
+    min-height: 60px;
+
+  +mq('bp-4')
+    min-height: 80px;
+    width 25%
+    display block
+    //margin auto
+    //padding 1rem
+
+
+.select__div
+  width 100%
+  min-height 120px
+  text-align center
+  vertical-align middle
+  content attr(data-img-url)
+  position relative
+  +mq('bp-2')
+    min-height: 180px;
+  +mq('bp-3')
+    min-height: 200px;
+  +mq('bp-4')
+    min-height: 220px;
+  +mq('bp-5')
+    min-height: 250px;
+  & .opening--img
+    width 100%
+    height auto
+    overflow hidden
+  & p
+    color #e05b43
+    background-color rgba(255, 255, 255, 0.8)
+    padding 1rem 0
+    position absolute
+    bottom 0px
+    width 100%
+    font-family "Grifo", "Georgia", "Times", "Times New Roman", serif;
+
+.pubdate, .author-bio
+  width 100%
+  text-align center
+
+.author-bio
+  margin-bottom 3rem
+
+.pubdate p, .author-bio p
+  font-family $font-family-moderat
+  max-width 32rem
+  margin 0 auto
+
+
+
+.pubdate:before
+  border-top 2px solid #d5d2c4
+  content "";
+  display block
+  margin 1rem auto
+  width 6rem
+
+.author-bio p a
+  color $icon-color
+
+.method
+  color $icon-color
+  &:hover
+    color $icon-color
+    text-decoration none
+
+.desp-desp
+  color black
+
+
+.opening--img:hover
+  animation slide-in-slow 0.5s ease-in-out
+
+@keyframes slide-in-slow {
+  0% {
+    transform translateY(10%)
+    opacity 0.1
+  }
+  100% {
+    transform translateY(0%)
+    opacity 1
+  }
+}

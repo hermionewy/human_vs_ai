@@ -1,0 +1,45 @@
+{{#each copy.start}}
+    {{#ifEquals id 'start-1'}}
+        <div class="card-sci" hidden id={{id}}>
+            <div class="card-sci-title">
+                <h1 class="title">{{{title}}}</h1>
+            </div>
+            <div class="card-sci-btn-container">
+                {{#each btn}}
+                    <a href="#{{next}}" class="card-sci-btn btn--secondary overline" data-next ={{next}} >
+                        <p class="btn__p">{{{text}}}</p>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    {{/ifEquals}}
+    {{#ifEquals id 'start-2'}}
+        <div class="card-sci" hidden id={{id}}>
+            <div class="card-sci__left">
+                <img data-src="assets/images/{{img}}" src="assets/images/placeholder.jpg" class="card-sci-img" >
+            </div>
+            <div class="card-sci__right">
+                <h3 class="card-sci__title">{{title}}</h3>
+                {{#each text}}
+                    <p class="card-sci-textContainer__p">{{{value}}}</p>
+                {{/each}}
+                {{#each btn}}
+                    <a href="#{{next}}" class="card--btn btn--secondary overline" data-next ={{next}} >
+                        <p class="btn__p">{{{text}}}</p>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    {{/ifEquals}}
+    {{#ifEquals id 'start-3'}}
+        <div class="card-sci" hidden id={{id}}>
+            <h1 class="spacer">{{title}}</h1>
+            {{#each btn}}
+                <a href="#{{next}}" class="card-sci-start-btn" data-next ={{next}} >
+                    <img data-src="assets/images/{{img}}" src="assets/images/placeholder.jpg" alt="{{img}}"/>
+                    <p class="btn__p">{{{text}}}</p>
+                </a>
+            {{/each}}
+        </div>
+    {{/ifEquals}}
+{{/each}}
