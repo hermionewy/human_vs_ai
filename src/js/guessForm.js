@@ -36,13 +36,25 @@ function init() {
 			const wrongMessage = getWrongMessages(answerChecker);
 			$guessCard.select('.wrongmessage').html(wrongMessage);
 			const newClueImgSrc = getNewClueImg();
-			console.log('the new clue image is: ', newClueImgSrc );
-			console.log(document.querySelector('#visual-98 > .lazy'));
-			document.querySelector('#visual-98 img').src = newClueImgSrc
+			const nextCluePage = getNextClue();
+			const img = d3.select('#visual-98').select('.hero__media').select('.lazy');
+			const cardNextBtn = d3.select('#visual-98').select('.card--btn');
+			img.attr('data-src', newClueImgSrc);
+			img.attr('src', newClueImgSrc);
+			cardNextBtn.attr('href', nextCluePage);
+			cardNextBtn.attr('data-next', nextCluePage)
 		}
 
 	});
 
+}
+
+function getNextClue() {
+	const journey = window.AIJourney;
+	console.log('the journey trying to calc for next clue: ', journey);
+	const lastHash = journey[journey.length-2];
+	const nextHash = `${lastHash.split('-')[0]}-${  +lastHash.split('-')[1]+1}`;
+	return `#${nextHash}`
 }
 
 function getNewClueImg() {
