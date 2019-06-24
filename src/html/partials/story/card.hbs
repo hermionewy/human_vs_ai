@@ -13,20 +13,33 @@
                 {{#each text}}
                     <p>{{{value}}}</p>
                 {{/each}}
-                <p class="show_cite"></p>
-                <div class="btn--div">
-                    {{#each btn}}
-                        <a href="#{{next}}" class="card--btn btn--secondary overline" data-next ={{next}} >
-                            <!--<span>-->
-                                <!--<img class="btn--icon" src="{{icon}}">-->
-                            <!--</span>-->
-                            <p class="btn__p">{{{text}}}</p>
-                        </a>
-                    {{/each}}
-                </div>
+                {{# ifEquals id 'visual-99'}}
+                    <div class="form_guess_container">
+                        <input type="text" id="visual-first-guess" name="firstguess" placeholder="First guess...">
+                        <input type="text" id="visual-second-guess" name="secondguess" placeholder="Second guess...">
+                        <input type="text" id="visual-third-guess" name="thirdguess" placeholder="Third guess...">
+                    </div>
+                    <div class="btn--div">
+                        {{#each btn}}
+                            <a class="card--btn btn--secondary overline" id="guessbtn-visual" data-next ={{next}} >
+                                <p class="btn__p">{{{text}}}</p>
+                            </a>
+                        {{/each}}
+                    </div>
+                {{/ifEquals}}
+                {{#ifNotEquals id 'visual-99'}}
+                    <div class="btn--div">
+                        {{#each btn}}
+                            <a href="#{{next}}" class="card--btn btn--secondary overline" data-next ={{next}} >
+                                <p class="btn__p">{{{text}}}</p>
+                            </a>
+                        {{/each}}
+                    </div>
+                {{/ifNotEquals}}
+
                 {{#if social}}
                     <div class="share-note">
-                        <p>Invite others to take this journey…</p>
+                        <p>Invite others to try…</p>
                     </div>
                     <ul class="site-footer__social">
                         <li>
