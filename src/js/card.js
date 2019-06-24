@@ -21,8 +21,8 @@ function showCard(cardID) {
 	$newCard.removeAttribute('hidden');
 	$newCard.removeAttribute('aria-hidden');
 	if(openPages.indexOf(cardID)<0){
-		addClass($newCard, 'slide-in')
-	}
+        addClass($newCard, 'slide-in')
+    }
 }
 
 export default { hideAllCards, showCard };

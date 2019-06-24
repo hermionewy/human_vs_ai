@@ -8,8 +8,8 @@ const journey = [];
 const $opening = select('#start-1');
 
 // let currentPerson;
-const hideAllCards = card.hideAllCards;
-const showCard = card.showCard;
+const {hideAllCards} = card;
+const {showCard} = card;
 
 function resize() {}
 
@@ -49,8 +49,8 @@ window.addEventListener('hashchange', () => {
 
 	if(hash && hash.indexOf('99')!=-1){
 		// guess card
-        const preHash=journey[journey.length-2];
-        const preImgSrc = getPreImgSrc(preHash);
+		const preHash=journey[journey.length-2];
+		const preImgSrc = getPreImgSrc(preHash);
 		console.log('Hey, here is preImgSRC: ', preHash, preImgSrc);
 		const allImgNodes = d3.select(`#${hash}`)
 			.select('img')
