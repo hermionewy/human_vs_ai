@@ -13,12 +13,19 @@
                 {{#each text}}
                     <p>{{{value}}}</p>
                 {{/each}}
-                {{# ifEquals id 'visual-99'}}
-                    <div class="form_guess_container">
-                        <input type="text" id="visual-first-guess" name="firstguess" placeholder="First guess...">
-                        <input type="text" id="visual-second-guess" name="secondguess" placeholder="Second guess...">
-                        <input type="text" id="visual-third-guess" name="thirdguess" placeholder="Third guess...">
+                {{#if checkbox}}
+                    <div class="checkbox-container">
+                        {{#each checkbox}}
+                            <div class="checkbox-btn" data-value="{{text}}-{{value}}">{{text}}</div>
+                        {{/each}}
                     </div>
+                {{/if}}
+                {{# ifEquals id 'visual-99'}}
+                    <!--<div class="form_guess_container">-->
+                        <!--<input type="text" id="visual-first-guess" name="firstguess" placeholder="First guess...">-->
+                        <!--<input type="text" id="visual-second-guess" name="secondguess" placeholder="Second guess...">-->
+                        <!--<input type="text" id="visual-third-guess" name="thirdguess" placeholder="Third guess...">-->
+                    <!--</div>-->
                     <div class="btn--div">
                         {{#each btn}}
                             <a class="card--btn btn--secondary overline" id="guessbtn-visual" data-next ={{next}} >
@@ -27,6 +34,7 @@
                         {{/each}}
                     </div>
                 {{/ifEquals}}
+
                 {{#ifNotEquals id 'visual-99'}}
                     <div class="btn--div">
                         {{#each btn}}
