@@ -16,7 +16,7 @@
                 {{#if checkbox}}
                     <div class="checkbox-container">
                         {{#each checkbox}}
-                            <div class="checkbox-btn" data-value="{{text}}-{{value}}">{{text}}</div>
+                            <div class="checkbox-btn" data-value="{{value}}" id="{{id}}">{{text}}</div>
                         {{/each}}
                     </div>
                 {{/if}}
@@ -28,7 +28,7 @@
                     <!--</div>-->
                     <div class="btn--div">
                         {{#each btn}}
-                            <a class="card--btn btn--secondary overline" id="guessbtn-visual" data-next ={{next}} >
+                            <a class="card--btn btn--secondary overline guessbtn-visual" id="{{id}}" data-next ={{next}} >
                                 <p class="btn__p">{{{text}}}</p>
                             </a>
                         {{/each}}

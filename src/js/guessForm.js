@@ -1,100 +1,167 @@
 import card from './card';
 
-const {hideAllCards} = card;
+const hideAllCard = card.hideAllCards;
 const {showCard} = card;
 
-const rightAnwers = {'visual': ['Bicycle', 'bicycle', 'bike', 'Bike', 'bikes', 'Stop sign', 'Stop signs', 'stop signs', 'Stopsign', 'stop sign', 'Car', 'Cars', 'car', 'cars']};
-
-
+const rightAnswers = {'visual': ['bicycle', 'stop-sign', 'car']};
+const $checkboxBtn = d3.selectAll('checkbox-btn');
+const visualCheckBtns = ['tree', 'traffic-signal', 'bicycle', 'bus', 'stop-sign', 'car', 'trash-can'];
+const selectedBtn={'tree':0, 'traffic-signal':0, 'bicycle': 0, 'bus': 0, 'stop-sign':0, 'car':0, 'trash-can':0 };
+const clickCount={'tree':0, 'traffic-signal':0, 'bicycle': 0, 'bus': 0, 'stop-sign':0, 'car':0, 'trash-can':0 };
+let start = 0; let selectedArr=[];
+let timeOutTimer=0;
 function init() {
 	const guessBtnVisual = d3.select('#guessbtn-visual');
+	chooseCategories();
 	// dynamically change guessVisual btn's url
 	guessBtnVisual.on('click', ()=>{
-		const hashBeforeGuess = window.location.hash;
-	    console.log('hey, save the guess hash!', hashBeforeGuess);
-		const firstValue = document.getElementById('visual-first-guess').value;
-		const secondValue = document.getElementById('visual-second-guess').value;
-		const thirdValue = document.getElementById('visual-third-guess').value;
-		window.experienceAIUserGuess = [firstValue, secondValue, thirdValue];
-		if(!firstValue && !secondValue && !thirdValue){
-		    // TODO: show a message "* Fill in three blanks to move on."
-		    return false
-		}
-		const answerChecker = isAnswerCorrect('visual');
-		if(answerChecker[0] && answerChecker[1] && answerChecker[2]){
-			// success
-			console.log('success!!! all are right!');
-			hideAllCards();
-			showCard('visual-100');
-			window.location.hash='#visual-100';
-		} else{
-			// false & another clue
-			const $guessCard = d3.select('#visual-98');
-			console.log('fail!!! At least one is wrong!');
-			hideAllCards();
-			showCard('visual-98');
-			const wrongMessage = getWrongMessages(answerChecker);
-			$guessCard.select('.wrongmessage').html(wrongMessage);
-			const newClueImgSrc = getNewClueImg();
-			const nextCluePage = getNextClue();
-			const img = d3.select('#visual-98').select('.hero__media').select('.lazy');
-			const cardNextBtn = d3.select('#visual-98').select('.card--btn');
-			img.attr('data-src', newClueImgSrc);
-			img.attr('src', newClueImgSrc);
-			cardNextBtn.attr('href', nextCluePage);
-			cardNextBtn.attr('data-next', nextCluePage)
-		}
+		const correctIntersection = validateBtns( window.AIUserChoice, 'visual' );
+	});
+}
 
+function guessBtnsInit() {
+	visualCheckBtns.forEach(btn=>{
+	    d3.select(`#${btn}`).classed('active', false);
+	    d3.select(`#${btn}`).classed('checked-correct', false);
+	    d3.select(`#${btn}`).classed('checked-wrong', false);
+		selectedBtn[btn]=0;
+		clickCount[btn]=0;
+		start =0;
+		selectedArr=[];
+		window.AIUserChoice=[];
+	});
+}
+
+function updateGuessBtnURL(uChoice, ctg) {
+	const rightArr = rightAnswers[ctg];
+	if( rightArr.sort().join(',') == uChoice.sort().join(',') ) {
+	    // compare if two arrays are equal when the order doesn't matter
+	    // all correct answers
+		d3.select(`#guessbtn-${ctg}`).attr('href', `#${ctg}-100`);
+		console.log('All answers are correct!!!');
+	} else {
+	    // incorrect answers: update btn, update next slide's title
+	    const nextClue = getNextClue();
+		d3.select(`#guessbtn-${ctg}`).attr('href', `#${ nextClue }`);
+		const message = guessWrongReturnTitle(uChoice, ctg);
+		d3.select(`#${ nextClue }`).select('.title__game').html(`${message} wrong. Here's another clue. `);
+	}
+}
+
+function validateBtns(uChoice, attr) {
+	// right answers add class "checked-correct", turn green, wrong answers add class "checked-wrong" turn light red
+	const rightArr = rightAnswers[attr];
+	// d3.selectAll('.checkbox-btn').classed('active', false);
+	// d3.selectAll('.checkbox-btn').classed('checked-wrong', false);
+	// d3.selectAll('.checkbox-btn').classed('checked-correct', false);
+	if(uChoice){
+	    console.log('users choice, I want to validate the answers for the second guess: ', uChoice);
+		const correctIntersection = uChoice.filter(r=>rightArr.includes(r));
+		const incorrectAnswer = uChoice.filter( r=>!rightArr.includes(r) );
+
+		correctIntersection.forEach(ci=>{
+			d3.select(`#${ci}`).classed('checked-correct', true);
+			d3.select(`#${ci}`).classed('active', false);
+		});
+		incorrectAnswer.forEach(ici=>{
+			d3.select(`#${ici}`).classed('checked-wrong', true);
+			selectedBtn[ici]=0;
+			clickCount[ici]=0;
+		});
+		start = correctIntersection.length;
+		window.AIUserChoice = correctIntersection;
+		console.log('!!!!!Current window.AIUserChoice: ', window.AIUserChoice)
+
+	}
+}
+
+function guessWrongReturnTitle( uChoice, ctg ) {
+	const rightArr = rightAnswers[ctg];
+	const wrongAnswersArr =[];
+	uChoice.forEach(uc=>{
+		if(rightArr.indexOf(uc) == -1){
+			wrongAnswersArr.push(uc);
+		}
 	});
 
+	if(wrongAnswersArr.length==1){
+		return `${capitalizeFirstLetter(wrongAnswersArr[0])} is`;
+	} if(wrongAnswersArr.length==2){
+		return `${capitalizeFirstLetter(wrongAnswersArr[0]) } and ${ wrongAnswersArr[1] } are`;
+	} if(wrongAnswersArr.length==3){
+		return `${capitalizeFirstLetter(wrongAnswersArr[0])  } ${  wrongAnswersArr[1] } and ${ wrongAnswersArr[2] } are`;
+	}
 }
 
 function getNextClue() {
-	const journey = window.AIJourney;
-	console.log('the journey trying to calc for next clue: ', journey);
-	const lastHash = journey[journey.length-2];
-	const nextHash = `${lastHash.split('-')[0]}-${  +lastHash.split('-')[1]+1}`;
-	return `#${nextHash}`
-}
-
-function getNewClueImg() {
-	const journey = window.AIJourney;
-	console.log('the journey trying to calc for next clue: ', journey);
-	const lastHash = journey[journey.length-2];
+	const currentJourney = window.AIJourney;
+	const lastHash = currentJourney[currentJourney.length-2];
+	if(lastHash=='visual-100'){
+		const nextHash = d3.select(`#${lastHash}`).select('.card--btn').attr('data-next');
+		return nextHash;
+	}
 	const nextHash = d3.select(`#${lastHash}`).select('.card--btn').attr('data-next');
-	const imgSrc = d3.select(`#${nextHash}`).select('img').attr('data-src');
-	return imgSrc
-}
-function getWrongMessages( arr ) {
-	let msg = '';
-	arr.forEach( (checker, idx) =>{
-	    if(!checker){
-			msg +=`${window.experienceAIUserGuess[idx]} and `;
-		}
-	});
-	if(msg.slice(-5)==' and '){
-	    msg=msg.substring(0, msg.length - 5);
-	}
-	if(msg.indexOf('and')>-1){
-	    msg +=' are wrong.'
-	} else {
-		msg += ' is wrong. ';
-	}
-	return capitalizeFirstLetter(msg);
+	return nextHash;
+
 }
 
-function isAnswerCorrect(attr) {
-	const answerChecker =[false, false, false];
-	window.experienceAIUserGuess.forEach( (guess, idx)=>{
-		if ( rightAnwers[attr].indexOf(guess.toLowerCase())>-1 ){
-			answerChecker[idx] = true
-		}
+function chooseCategories() {
+	visualCheckBtns.forEach(btn=>{
+		d3.select(`#${btn}`).on('click', () => {
+			console.log('start!!! ', start);
+			if(start<3){
+				clickCount[btn] ++;
+				if(clickCount[btn]%2){
+					// click odd times
+					start++;
+					d3.select(`#${btn}`).classed('active', true);
+					selectedBtn[btn] = 1;
+					if(start==3){
+						selectedArr = getSelectedArr(selectedBtn);
+						d3.select('#guessbtn-visual').classed('active', true);
+						updateGuessBtnURL(selectedArr, 'visual');
+					}
+				} else {
+					d3.select(`#${btn}`).classed('active', false);
+					selectedBtn[btn] = 0;
+					start--;
+				}
+			} else if(start==3){
+				clearTimeout(timeOutTimer);
+				if(selectedBtn[btn]){
+					selectedBtn[btn] = 0;
+					start--;
+					d3.select('#guessbtn-visual').classed('active', false);
+				} else {
+					d3.select('#guessbtn-visual').classed('active', true);
+					d3.select('#guessbtn-visual').classed('blinking', true);
+					timeOutTimer= setTimeout(()=>{d3.select('#guessbtn-visual').classed('blinking', false);}, 1000);
+					console.log('!!!!!!You have selected 3 categories! Click on a red button to deselect it.');
+				}
+				clickCount[btn] =0;
+				selectedBtn[btn]=0;
+				d3.select(`#${btn}`).classed('active', false);
+			}
+			selectedArr = getSelectedArr(selectedBtn);
+			window.AIUserChoice = selectedArr;
+		})
 	});
-	return answerChecker
+	return selectedArr
 }
+
+function getSelectedArr(obj) {
+	const chosenArr =[];
+	for (const attr in obj){
+		if(obj[attr]){
+			chosenArr.push(attr)
+		}
+	}
+	return chosenArr;
+}
+
 
 function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export default { init }
+export default { init, validateBtns, guessBtnsInit }

@@ -3,10 +3,13 @@ import { select, selectAll, addClass, removeClass } from './utils/dom';
 import menu from './menu.js';
 import guessForm from './guessForm';
 import card from './card';
+import rightAnswers from './rightAnswers';
+
 
 const journey = [];
 const $opening = select('#start-1');
-
+const finalChapter = ['visual-7'];
+const allRightAnswers = rightAnswers();
 // let currentPerson;
 const {hideAllCards} = card;
 const {showCard} = card;
@@ -50,14 +53,15 @@ window.addEventListener('hashchange', () => {
 	if(hash && hash.indexOf('99')!=-1){
 		// guess card
 		const preHash=journey[journey.length-2];
+		d3.select(`#${hash}`).select('#return-visual').attr('href', `#${preHash}`);
 		const preImgSrc = getPreImgSrc(preHash);
 		console.log('Hey, here is preImgSRC: ', preHash, preImgSrc);
 		const allImgNodes = d3.select(`#${hash}`)
 			.select('img')
 			.attr('src', preImgSrc);
-		console.log('HEY, i am the journey: ', journey);
 		hideAllCards();
 		showCard(hash);
+
 	} else if(hash && hash!='start-1') {
 	    // switch clue card; guess wrong card was handled by guessForm.js
 		hideAllCards();
@@ -70,6 +74,12 @@ window.addEventListener('hashchange', () => {
 			d3.select(node).attr('src', dataSrc);
 		});
 	}
+
+	finalChapter.forEach(fc=>{
+	    d3.select(`#${fc}`).select('.card--btn').on('click', ()=>{
+			guessForm.guessBtnsInit();
+		})
+	});
 	window.AIJourney = journey;
 });
 
@@ -78,5 +88,6 @@ function getPreImgSrc(preHash) {
 		.select('img')
 		.attr('data-src');
 }
+
 
 export default { init, resize };

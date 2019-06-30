@@ -127,9 +127,37 @@
     //display inline-grid
     text-transform uppercase
     set-type-size('x-small')
+    &.checked-correct
+      border 1px solid $icon-color-green
+      background-color $icon-color-green
+      pointer-events none
+      color white
+    &.checked-wrong
+      border 1px solid $icon-color
+      background-color white
+      color black
+      opacity 0.5
+      pointer-events none
     &.active
       color white
       background-color $icon-color
     &:hover
-      color white
-      background-color $icon-color
+      border 1px solid $icon-color
+      +mq('bp-4')
+        border 2px solid $icon-color
+
+.guessbtn-visual:first-child
+  opacity 0.5
+  &.active
+    opacity 1
+    &.blinking
+      animation: blinkingText 0.8s ease-in-out;
+
+
+@keyframes blinkingText{
+  0%{     background-color: $icon-color;  }
+  49%{    background-color: transparent; }
+  50%{    background-color: transparent; }
+  90%{    background-color:transparent; }
+  100%{   background-color: $icon-color; }
+}
