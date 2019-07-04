@@ -1,0 +1,69 @@
+{{#each copy.speech}}
+    <div class="card-sci" hidden id={{id}}>
+        <div class="hero__media">
+            <figure>
+                <picture>
+                    <img class="lazy" data-src="./assets/images/{{img}}" src="assets/images/placeholder.jpg" alt="{{{credit}}}" />
+                </picture>
+                {{#if alt}}
+                    <figcaption> {{{alt}}} </figcaption>
+                {{/if}}
+            </figure>
+        </div>
+        <div class="hero__content">
+            <div class="card__content">
+                <h2 class="title__game">{{{title}}}</h2>
+                {{#each text}}
+                    <p class="card__content__p">{{{value}}}</p>
+                {{/each}}
+                {{#if checkbox}}
+                    <div class="checkbox-container">
+                        {{#each checkbox}}
+                            <div class="checkbox-btn" data-value="{{value}}" id="{{id}}">{{text}}</div>
+                        {{/each}}
+                    </div>
+                {{/if}}
+                {{# ifEquals id 'speech-99'}}
+                    <!--<div class="form_guess_container">-->
+                    <!--<input type="text" id="speech-first-guess" name="firstguess" placeholder="First guess...">-->
+                    <!--<input type="text" id="speech-second-guess" name="secondguess" placeholder="Second guess...">-->
+                    <!--<input type="text" id="speech-third-guess" name="thirdguess" placeholder="Third guess...">-->
+                    <!--</div>-->
+                    <div class="speech-info-tip" id="speech-info-tip"></div>
+                    <div class="btn--div">
+                        {{#each btn}}
+                            <a class="card--btn btn--secondary overline guessbtn-speech" id="{{id}}" data-next ={{next}} >
+                                <p class="btn__p">{{{text}}}</p>
+                            </a>
+                        {{/each}}
+                    </div>
+                {{/ifEquals}}
+
+                {{#ifNotEquals id 'speech-99'}}
+                    <div class="btn--div">
+                        {{#each btn}}
+                            <a href="#{{next}}" class="card--btn btn--secondary overline" data-next ={{next}} >
+                                <p class="btn__p">{{{text}}}</p>
+                            </a>
+                        {{/each}}
+                    </div>
+                {{/ifNotEquals}}
+
+                {{#if social}}
+                    <div class="share-note">
+                        <p>Invite others to try…</p>
+                    </div>
+                    <ul class="site-footer__social">
+                        <li>
+                            <a href="https://twitter.com/intent/tweet?text=I%20just%20relived%20an%20immigrant’s%20journey%20to%20America%20via%20Experience%20magazine.%20Try%20it…%20&url=https://expmag.com/immigrant-experience/" target="_blank">@@include("twitter.svg")</a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexpmag.com%2Fimmigrant-experience" target="_blank">@@include("facebook.svg")</a>
+                        </li>
+                    </ul>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+{{/each}}
+

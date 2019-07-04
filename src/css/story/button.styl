@@ -11,14 +11,16 @@
   font-weight: $font-weight-bold;
   transition: $transition-base;
 
-.card-sci-start-btn
+a.card-sci-start-btn
   width 100%
   flex 1
-  .btn__p
+  &:hover
+    text-decoration none
+  & .btn__p
     color $icon-color
     text-align center
     set-type-size('medium', true)
-  img
+  & img
     width 150px
     height 150px
     margin auto
@@ -115,34 +117,49 @@
 .checkbox-container
   display flex
   flex-wrap wrap
-  justify-content center
+  justify-content left
+  padding 0rem 1rem
   .checkbox-btn
-    padding 0.3rem 0.6rem
-    margin 0.2rem
-    border 1px solid $icon-color
-    width 4.5rem
-    height 2.5rem
-    background-color white
-    color black
-    //display inline-grid
+    padding: 0.5rem;
+    margin: 0;
+    border: 1px solid $gray-light
+    width: 50%;
+    height: 2rem;
+    background-color: #fff;
+    color: #333;
+    font-size: 1rem
     text-transform uppercase
     set-type-size('x-small')
     &.checked-correct
-      border 1px solid $icon-color-green
       background-color $icon-color-green
       pointer-events none
       color white
+      position relative
+      &:after
+        content: '✔'
+        color white
+        position absolute
+        bottom 0px
+        right 0px
+
     &.checked-wrong
-      border 1px solid $icon-color
-      background-color white
+      background-color $icon-color
       color black
-      opacity 0.5
       pointer-events none
+      position relative
+      opacity 0.7
+      &:after
+        content: '✘'
+        color white
+        position absolute
+        bottom 0px
+        right 0px
+
     &.active
       color white
       background-color $icon-color
     &:hover
-      border 1px solid $icon-color
+      border 1px solid $gray-light
       +mq('bp-4')
         border 2px solid $icon-color
 

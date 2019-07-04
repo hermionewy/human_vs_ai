@@ -55,7 +55,6 @@ function validateBtns(uChoice, attr) {
 	// d3.selectAll('.checkbox-btn').classed('checked-wrong', false);
 	// d3.selectAll('.checkbox-btn').classed('checked-correct', false);
 	if(uChoice){
-	    console.log('users choice, I want to validate the answers for the second guess: ', uChoice);
 		const correctIntersection = uChoice.filter(r=>rightArr.includes(r));
 		const incorrectAnswer = uChoice.filter( r=>!rightArr.includes(r) );
 
@@ -71,7 +70,6 @@ function validateBtns(uChoice, attr) {
 		start = correctIntersection.length;
 		window.AIUserChoice = correctIntersection;
 		console.log('!!!!!Current window.AIUserChoice: ', window.AIUserChoice)
-
 	}
 }
 
@@ -132,11 +130,12 @@ function chooseCategories() {
 					selectedBtn[btn] = 0;
 					start--;
 					d3.select('#guessbtn-visual').classed('active', false);
+					d3.select('.visual-info-tip').classed('active', false);
 				} else {
 					d3.select('#guessbtn-visual').classed('active', true);
 					d3.select('#guessbtn-visual').classed('blinking', true);
 					timeOutTimer= setTimeout(()=>{d3.select('#guessbtn-visual').classed('blinking', false);}, 1000);
-					console.log('!!!!!!You have selected 3 categories! Click on a red button to deselect it.');
+					d3.select('.visual-info-tip').classed('active', true).html('You have selected three objects. Click on a red button to deselect it.');
 				}
 				clickCount[btn] =0;
 				selectedBtn[btn]=0;

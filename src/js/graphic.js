@@ -3,6 +3,7 @@ import { select, selectAll, addClass, removeClass } from './utils/dom';
 import menu from './menu.js';
 import guessForm from './guessForm';
 import card from './card';
+import speech from './speech';
 import rightAnswers from './rightAnswers';
 
 
@@ -49,7 +50,9 @@ window.addEventListener('hashchange', () => {
 	}
 	const hash = window.location.hash.replace('#', '');
 	journey.push(hash);
-
+	speech.init('#speech-text-2');
+	speech.init('#speech-text-4');
+	speech.init('#speech-text-5');
 	if(hash && hash.indexOf('99')!=-1){
 		// guess card
 		const preHash=journey[journey.length-2];
@@ -61,18 +64,18 @@ window.addEventListener('hashchange', () => {
 			.attr('src', preImgSrc);
 		hideAllCards();
 		showCard(hash);
+		if(window.AIUserChoice.length>0){
+		    const guessTipOne = d3.select(`#${hash}`).select('.card__content__p').select('span');
+		    if (window.AIUserChoice.length==1) {
+				guessTipOne.text('Please select another two objects.')
+			} else {
+				guessTipOne.text('Please select another one object.')
+			}
+		}
 
 	} else if(hash && hash!='start-1') {
 	    // switch clue card; guess wrong card was handled by guessForm.js
-		hideAllCards();
-		showCard(hash);
-		// load the photo now so that the photo is not downloaded at the beginning
-		const allImgNodes = d3.select(`#${hash}`)
-			.selectAll('img').nodes();
-		allImgNodes.forEach(node=>{
-			const dataSrc = d3.select(node).attr('data-src');
-			d3.select(node).attr('src', dataSrc);
-		});
+		loadCurrentSlide(hash)
 	}
 
 	finalChapter.forEach(fc=>{
@@ -82,6 +85,18 @@ window.addEventListener('hashchange', () => {
 	});
 	window.AIJourney = journey;
 });
+
+function loadCurrentSlide(hash) {
+	hideAllCards();
+	showCard(hash);
+	// load the photo now so that the photo is not downloaded at the beginning
+	const allImgNodes = d3.select(`#${hash}`)
+		.selectAll('img').nodes();
+	allImgNodes.forEach(node=>{
+		const dataSrc = d3.select(node).attr('data-src');
+		d3.select(node).attr('src', dataSrc);
+	});
+}
 
 function getPreImgSrc(preHash) {
 	return d3.select(`#${preHash}`)
