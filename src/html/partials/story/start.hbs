@@ -1,12 +1,22 @@
 {{#each copy.start}}
     {{#ifEquals id 'start-1'}}
         <div class="card-sci" hidden id={{id}}>
-            <div class="card-sci-title">
-                <h1 class="title">{{{title}}}</h1>
+            <!--<div class="card-sci-title">-->
+                <!--<h1 class="title">{{{title}}}</h1>-->
+            <!--</div>-->
+            <div class="card-sci-start-img-container">
+                <div class="start-img-container sticky">
+                    <img data-src="assets/images/{{img}}" src="assets/images/placeholder.jpg" class="card-sci-img" >
+                </div>
             </div>
-            <div class="card-sci-btn-container">
+            <div class="card-sci__right">
+                {{#each step}}
+                    <div class="start1-step" id="step-{{@index}}" data-index="{{@index}}">
+                        <p class="card-sci-start__p" >{{{value}}}</p>
+                    </div>
+                {{/each}}
                 {{#each btn}}
-                    <a href="#{{next}}" class="card-sci-btn btn--secondary overline" data-next ={{next}} >
+                    <a href="#{{next}}" class="card--btn btn--secondary overline" data-next ={{next}} >
                         <p class="btn__p">{{{text}}}</p>
                     </a>
                 {{/each}}

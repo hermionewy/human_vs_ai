@@ -2,10 +2,48 @@
   .spacer
     height 73px
 #start-1
-  .card-sci-btn
+  position relative
+  background-color black
+  color $white
+  flex-direction row-reverse
+  //+mq('bp-5')
+  //  flex-direction row-reverse
+  .card-sci-start-img-container
+    position fixed
+    top 4.5rem
+    left 0px
+
+    .start-img-container
+      width 100%
+      height auto
+  .card--btn
+    margin-bottom 12rem
+    +mq('bp-5')
+      margin-bottom 20rem
+
+  .start1-step
+    margin-top 65vh
+    margin-bottom 15vh
     background-color black
-    p
-      color $white
+    color $white
+    +mq('bp-4')
+      margin-top 40vh
+      margin-bottom 50vh
+    .card-sci-start__p
+      text-align center
+      font-family:"GrifoL-Bold","Georgia",serif
+      set-type-size('large', true)
+  #step-0 .card-sci-start__p
+    set-type-size('xx-large', true)
+
+
+  .card-sci-btn-container
+    margin 5rem 0
+    .card-sci-btn
+      background-color black
+      p
+        color $white
+
 #start-2
   .card--btn
     background-color black

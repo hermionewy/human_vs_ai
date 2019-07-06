@@ -1,11 +1,11 @@
 /* global d3 */
-import { select, selectAll, addClass, removeClass } from './utils/dom';
+import { select } from './utils/dom';
 import menu from './menu.js';
 import guessForm from './guessForm';
 import card from './card';
 import speech from './speech';
 import rightAnswers from './rightAnswers';
-
+import startScroll from './startScroll';
 
 const journey = [];
 const $opening = select('#start-1');
@@ -23,6 +23,7 @@ function init() {
 	$opening.removeAttribute('hidden');
 	window.location.hash = 'start-1';
 	guessForm.init();
+    startScroll.init();
 }
 
 function offsetAnchor() {
