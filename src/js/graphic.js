@@ -12,6 +12,7 @@ const $opening = select('#start-1');
 const finalChapter = ['visual-7'];
 const allRightAnswers = rightAnswers();
 // let currentPerson;
+let speechOutTimer;
 const {hideAllCards} = card;
 const {showCard} = card;
 
@@ -58,6 +59,16 @@ window.addEventListener('hashchange', () => {
 	case 'start-3':
 		darkModeOff();
 		break;
+	case 'speech-text-5':
+		clearTimeout(speechOutTimer);
+		break;
+	case 'speech-text-6':
+		speechOutTimer = setTimeout(()=>{
+			loadCurrentSlide('speech-text-7');
+			location.hash = 'speech-text-7';
+		}, 2000);
+		break;
+
 	case 'visual-99': // guess card
 		const preHash=journey[journey.length-2];
 		d3.select(`#${hash}`).select('#return-visual').attr('href', `#${preHash}`);
@@ -74,6 +85,7 @@ window.addEventListener('hashchange', () => {
 				guessTipOne.text('Please select another one object.')
 			}
 		}
+		break;
 
 	}
 
