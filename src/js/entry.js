@@ -36,7 +36,7 @@ function init() {
 	window.addEventListener('resize', debounce(resize, 150));
 	// setup sticky header menu
 	setupStickyHeader();
-	//
+    graphic.darkModeOn();
 
 	// kick off graphic code
 	graphic.init();

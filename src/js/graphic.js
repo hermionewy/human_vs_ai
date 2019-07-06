@@ -40,21 +40,25 @@ function offsetAnchor() {
 
 window.addEventListener('hashchange', () => {
 	offsetAnchor();
-	if(window.location.hash=='#start-1'){
-		// console.log(window.location.hash);
-		journey.length=0;
-		hideAllCards();
-		showCard('start-1');
-		document.title = 'Interactive: How we know what we know';
-		return
-	}
 	const hash = window.location.hash.replace('#', '');
-	journey.push(hash);
-	speech.init('#speech-text-2');
-	speech.init('#speech-text-4');
-	speech.init('#speech-text-5');
-	if(hash && hash.indexOf('99')!=-1){
-		// guess card
+	if(hash){
+		loadCurrentSlide(hash);
+		journey.push(hash);
+	}
+
+	switch (hash) {
+	case 'start-1':
+		journey.length=0;
+		document.title = 'Interactive: How we know what we know';
+		darkModeOn();
+		break;
+	case 'start-2':
+		darkModeOn();
+		break;
+	case 'start-3':
+		darkModeOff();
+		break;
+	case 'visual-99': // guess card
 		const preHash=journey[journey.length-2];
 		d3.select(`#${hash}`).select('#return-visual').attr('href', `#${preHash}`);
 		const preImgSrc = getPreImgSrc(preHash);
@@ -62,21 +66,22 @@ window.addEventListener('hashchange', () => {
 		const allImgNodes = d3.select(`#${hash}`)
 			.select('img')
 			.attr('src', preImgSrc);
-		hideAllCards();
-		showCard(hash);
 		if(window.AIUserChoice.length>0){
-		    const guessTipOne = d3.select(`#${hash}`).select('.card__content__p').select('span');
-		    if (window.AIUserChoice.length==1) {
+			const guessTipOne = d3.select(`#${hash}`).select('.card__content__p').select('span');
+			if (window.AIUserChoice.length==1) {
 				guessTipOne.text('Please select another two objects.')
 			} else {
 				guessTipOne.text('Please select another one object.')
 			}
 		}
 
-	} else if(hash && hash!='start-1') {
-	    // switch clue card; guess wrong card was handled by guessForm.js
-		loadCurrentSlide(hash)
 	}
+
+
+	speech.init('#speech-text-2');
+	speech.init('#speech-text-4');
+	speech.init('#speech-text-5');
+
 
 	finalChapter.forEach(fc=>{
 	    d3.select(`#${fc}`).select('.card--btn').on('click', ()=>{
@@ -84,6 +89,7 @@ window.addEventListener('hashchange', () => {
 		})
 	});
 	window.AIJourney = journey;
+
 });
 
 function loadCurrentSlide(hash) {
@@ -103,6 +109,12 @@ function getPreImgSrc(preHash) {
 		.select('img')
 		.attr('data-src');
 }
-
-
-export default { init, resize };
+function darkModeOn() {
+	d3.select('.article').classed('darkMode', true);
+	d3.select('header').classed('darkMode', true);
+}
+function darkModeOff() {
+	d3.select('.article').classed('darkMode', false);
+	d3.select('header').classed('darkMode', false);
+}
+export default { init, resize, darkModeOn, darkModeOff };
