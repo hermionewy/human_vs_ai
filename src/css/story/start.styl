@@ -12,6 +12,9 @@
     position fixed
     top 4.5rem
     left 0px
+    width 100%
+    +mq('bp-4')
+      width 50%
 
     .start-img-container
       width 100%
@@ -31,10 +34,17 @@
       margin-bottom 50vh
     .card-sci-start__p
       text-align center
-      font-family:"GrifoL-Bold","Georgia",serif
+      font-family $font-family-grifo-bold
       set-type-size('large', true)
+      opacity 0.3
+      transition 2s ease-in-out
+      &.active
+        opacity 1
+
   #step-0 .card-sci-start__p
     set-type-size('xx-large', true)
+    +mq('bp-5')
+      font-size 70px
 
 
   .card-sci-btn-container
