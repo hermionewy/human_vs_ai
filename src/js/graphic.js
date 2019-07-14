@@ -67,7 +67,7 @@ window.addEventListener('hashchange', () => {
 		speechOutTimer = setTimeout(()=>{
 			loadCurrentSlide('speech-text-7');
 			location.hash = 'speech-text-7';
-		}, 2000);
+		}, 15000);
 		break;
 
 	case 'visual-99': // guess card

@@ -26,7 +26,7 @@ function init() {
 
 
 function switchIndex(idx) {
-
+	let innerTimer;
 	d3.selectAll('.step').classed('is-active', false);
 	d3.select(`#step-${idx}`)
 		.classed('is-active', true);
@@ -34,11 +34,10 @@ function switchIndex(idx) {
 	d3.select(`#step-${idx}`).select('.card-sci-start__p').classed('active', true);
 
 	const imgPath = `assets/images/start/animation/glitche_face_v2_${  idx+3 }.jpg`;
-	d3.select('#start-1').select('.card-sci-img')
+	const cardImg = d3.select('#start-1').select('.card-sci-img');
+	cardImg
 		.attr('data-src', imgPath)
-		.attr('src', imgPath);
-
-	d3.select('start1-step')
-
+		.attr('src', imgPath)
+		.style('opacity', 1)
 }
 export default { init }
