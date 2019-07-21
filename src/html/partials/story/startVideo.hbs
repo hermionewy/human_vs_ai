@@ -1,0 +1,25 @@
+ <div class="section-breaker">
+     <div class="chapterBreakerDiv">
+         <img class="chapterBreakerImg" data-src="assets/images/{{pngurl}}" src=""/>
+     </div>
+    <div class="section_video sticky">
+        <video class="videoElem" id="{{id}}-video" data-src="assets/video/{{bgurl}}.mp4" data-srcmobile="assets/video/{{bgurl}}_mobile.mp4" muted="true" autobuffer="true" preload="auto" playsinline="true" autoplay="false">
+            <!--<source id="mobileSrc" src="assets/video/{{bgurl}}_mobile.mp4" type="video/mp4" media="(max-width: 600px)">-->
+            <source id="laptopSrc" src="assets/images/start/glitche_face_master_v2_1.mp4" type="video/mp4" media="(min-width: 601px)">
+            <!--<img src="assets/images/placeholder.jpg" title="Your browser does not support the HTML5 video. Please update the browser to view the content.">-->
+        </video>
+    </div>
+
+    <div class="container_fluid chapter-content">
+        <div class="row">
+            {{#each stepText}}
+                <div class="chapter-step {{../id }}-step" data-attr="{{dataAttr}}">
+                    <p>{{content}}</p>
+                </div>
+            {{/each}}
+            <div class="chapter-step {{id }}-step" data-attr="3">
+                <h2 class="section-title" data-title = {{id }} >{{{title}}}</h2>
+            </div>
+        </div>
+    </div>
+</div>

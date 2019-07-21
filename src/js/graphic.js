@@ -7,6 +7,7 @@ import speech from './speech';
 import rightAnswers from './rightAnswers';
 import startScroll from './startScroll';
 
+
 const journey = [];
 const $opening = select('#start-1');
 const finalChapter = ['visual-7'];
@@ -23,7 +24,9 @@ function init() {
 	$opening.removeAttribute('hidden');
 	window.location.hash = 'start-1';
 	guessForm.init();
-    startScroll.init();
+	startScroll.init();
+	const videoElem = document.getElementById('start-video');
+	const sel = '.start1-step';
 }
 
 function offsetAnchor() {
