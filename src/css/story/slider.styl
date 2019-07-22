@@ -1,0 +1,84 @@
+.slider-container
+	.slider_play_btn
+		.btn__p
+			.feather-play
+				stroke $icon-color
+				//stroke $icon-color
+.slider
+	width 90%
+	padding 0.5rem 1rem
+	margin auto
+	height 2rem
+	position sticky
+	left 1rem
+	top calc(100% - 6rem)
+	z-index 1000
+
+	+mq('bp-5')
+		//width calc(90% - 45rem)
+		max-width 30rem
+		left 15rem
+
+	& p
+		margin 0.5rem 0
+		font-family Arial, "Helvetica Neue", Helvetica, sans-serif
+
+	& .slider-text-container
+		position: absolute;
+		width: 90%;
+		margin auto
+		height: 2rem;
+		top: 1.5rem;
+		z-index: -1;
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		font-family Helvetica, Arial, sans-serif
+		set-type-size('xxx-small')
+		color black
+		&.emotion-info
+			top 0px
+			font-weight bold
+
+
+
+	& .slider-bg-container
+		position: absolute;
+		width: 90%;
+		margin 0rem 1rem
+		height: 2rem;
+		top: 2px;
+		left: 0px;
+		z-index: -1;
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-around;
+
+		& .slider-bg
+			position relative
+			width 10%
+			background-color $slider-gray
+			height 8px
+			margin auto
+			margin-right 1px
+			display inline-block
+
+			&:last-child
+				margin-right 0
+	& .inputSlider
+		appearance: none;
+		width 100%
+		height 1rem
+		background rgba(255, 255, 255, 0)
+		outline none
+		&::-webkit-slider-thumb
+			appearance: none;
+			width: 1rem;height: 1rem; border-radius: 0.5rem; background: $icon-color;cursor: pointer;
+
+
+//#sliderRange::--webkit-slider-thumb
+//	-webkit-appearance none;
+//	cursor pointer
+//	background #34496E
+//	width 100%
+//	height 2rem

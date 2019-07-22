@@ -1,15 +1,22 @@
 {{#each copy.visual}}
     <div class="card-sci" hidden id={{id}}>
         <div class="hero__media">
-            <figure>
-                <picture>
-                    <img class="lazy" data-src="./assets/images/{{img}}" src="assets/images/placeholder.jpg" alt="{{{credit}}}" />
-                </picture>
-                {{#if alt}}
-                    <figcaption> {{{alt}}} </figcaption>
-                {{/if}}
-            </figure>
-
+            {{#if img}}
+                <figure>
+                    <picture>
+                        <img class="lazy" data-src="./assets/images/{{img}}" src="assets/images/placeholder.jpg" alt="{{{credit}}}" />
+                    </picture>
+                    {{#if alt}}
+                        <figcaption> {{{alt}}} </figcaption>
+                    {{/if}}
+                </figure>
+            {{/if}}
+            {{#if video}}
+                <video class="videoElem" id="{{id}}-video" data-src="assets/video/{{video}}.mp4" data-srcmobile="assets/video/{{video}}_mobile.mp4" muted="true" autobuffer="true" preload="auto" playsinline="true" autoplay="true">
+                    <source id="laptopSrc" src="assets/video/{{video}}.mp4" type="video/mp4">
+                    <img src="assets/images/placeholder.jpg" title="Your browser does not support the HTML5 video. Please update the browser to view the content.">
+                </video>
+            {{/if}}
         </div>
         <div class="hero__content">
             <div class="card__content">
@@ -25,11 +32,6 @@
                     </div>
                 {{/if}}
                 {{# ifEquals id 'visual-99'}}
-                    <!--<div class="form_guess_container">-->
-                    <!--<input type="text" id="visual-first-guess" name="firstguess" placeholder="First guess...">-->
-                    <!--<input type="text" id="visual-second-guess" name="secondguess" placeholder="Second guess...">-->
-                    <!--<input type="text" id="visual-third-guess" name="thirdguess" placeholder="Third guess...">-->
-                    <!--</div>-->
                     <div class="visual-info-tip" id="visual-info-tip"></div>
                     <div class="btn--div">
                         {{#each btn}}

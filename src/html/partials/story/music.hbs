@@ -48,6 +48,30 @@
 
                 {{#ifNotEquals id 'speech-99'}}
                     <div class="btn--div">
+                        {{#each slider}}
+                            <div class="slider-container">
+                                {{#if button}}
+                                    <button class="card--btn btn--secondary overline slider_play_btn" id="{{../id}}__PlayBtn-{{@index}}">
+                                        <p class="btn__p">
+                                            @@include('play.svg') {{{button}}}
+                                        </p>
+                                    </button>
+                                {{/if}}
+                                {{#if text}}
+                                    <p class="btn__p"> {{{text}}}</p>
+                                {{/if}}
+                                {{#if audio}}
+                                    <audio id="{{../id}}__audio-{{@index}}">
+                                        <source src="assets/images/music/{{audio}}" type="audio/mp3">
+                                    </audio>
+                                {{/if}}
+                                <div class="slider" id="{{../id}}__slider-{{@index}}">
+                                    <input type="range" min="0" max="1" value="0.5" step="3" class="inputSlider" id="{{../id}}__slider-{{@index}}">
+                                    {{> story/slider }}
+                                </div>
+                            </div>
+                        {{/each}}
+
                         {{#each btn}}
                             <a href="#{{next}}" class="card--btn btn--secondary overline" data-next ={{next}} >
                                 <p class="btn__p">{{{text}}}</p>

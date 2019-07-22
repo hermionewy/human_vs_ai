@@ -6,6 +6,7 @@ import card from './card';
 import speech from './speech';
 import rightAnswers from './rightAnswers';
 import startScroll from './startScroll';
+import music from './music';
 
 const journey = [];
 const $opening = select('#start-1');
@@ -23,7 +24,8 @@ function init() {
 	$opening.removeAttribute('hidden');
 	window.location.hash = 'start-1';
 	guessForm.init();
-    startScroll.init();
+	startScroll.init();
+	music.init();
 }
 
 function offsetAnchor() {
