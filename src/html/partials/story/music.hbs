@@ -53,7 +53,7 @@
                                 {{#if button}}
                                     <button class="card--btn btn--secondary overline slider_play_btn" id="{{../id}}__PlayBtn-{{@index}}">
                                         <p class="btn__p">
-                                            @@include('play.svg') {{{button}}}
+                                            <span class="play-svg play active">@@include('play.svg')</span><span class="play-svg pause">@@include('pause.svg')</span> {{{button}}}
                                         </p>
                                     </button>
                                 {{/if}}
@@ -65,8 +65,11 @@
                                         <source src="assets/images/music/{{audio}}" type="audio/mp3">
                                     </audio>
                                 {{/if}}
-                                <div class="slider" id="{{../id}}__slider-{{@index}}">
-                                    <input type="range" min="0" max="1" value="0.5" step="3" class="inputSlider" id="{{../id}}__slider-{{@index}}">
+                                <div class="slider" id="{{../id}}__sliderContainer-{{@index}}">
+                                    {{#if spotify}}
+                                        <span class="slider-ring" data-attr="{{spotify}}">@@include('circle.svg') <sup>Spotify</sup></span>
+                                    {{/if}}
+                                    <input type="range" min="0" max="1" value="0.5" step="0.01" class="inputSlider" id="{{../id}}__slider-{{@index}}">
                                     {{> story/slider }}
                                 </div>
                             </div>

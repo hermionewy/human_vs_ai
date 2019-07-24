@@ -1,8 +1,15 @@
 .slider-container
 	.slider_play_btn
 		.btn__p
+			.play-svg
+				display none
+				&.active
+					display inline-block
 			.feather-play
 				stroke $icon-color
+			.feather-pause
+				stroke $icon-color
+				fill $icon-color
 				//stroke $icon-color
 .slider
 	width 90%
@@ -18,6 +25,18 @@
 		//width calc(90% - 45rem)
 		max-width 30rem
 		left 15rem
+	.slider-ring
+		position: absolute;
+		left: 45%;
+		top 23%
+		color $icon-color-green
+		font-weight bold
+		set-type-size('xx-small')
+		svg
+			width 12px
+			height 12px
+			stroke-width 4
+
 
 	& p
 		margin 0.5rem 0
@@ -39,7 +58,6 @@
 		&.emotion-info
 			top 0px
 			font-weight bold
-
 
 
 	& .slider-bg-container
@@ -65,7 +83,10 @@
 
 			&:last-child
 				margin-right 0
-	& .inputSlider
+
+
+
+& .inputSlider
 		appearance: none;
 		width 100%
 		height 1rem

@@ -5,6 +5,7 @@ import graphic from './graphic';
 
 const $body = d3.select('body');
 let previousWidth = 0;
+window.musicSliders={};
 
 function resize() {
 	// only do resize on width changes, not height
