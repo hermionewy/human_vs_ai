@@ -21,14 +21,18 @@
       width 100%
       height auto
       z-index 1001
-      .card-sci-img
+      .start-img-inner
         position absolute
         top 0px
-        opacity 0
-        transition 1.5s ease-in-out
-        z-index 2000
-        &.active
-          opacity 1
+        left 0px
+        .card-sci-img
+          position relative
+          top 0
+          opacity 0
+          transition 1.5s ease-in-out
+          z-index 2000
+          &.active
+            opacity 1
 
   .card--btn
     margin-bottom 12rem

@@ -12,8 +12,8 @@
                 </figure>
             {{/if}}
             {{#if video}}
-                <video class="videoElem" id="{{id}}-video" data-src="assets/video/{{video}}.mp4" data-srcmobile="assets/video/{{video}}_mobile.mp4" muted="true" autobuffer="true" preload="auto" playsinline="true" autoplay="true">
-                    <source id="laptopSrc" src="assets/video/{{video}}.mp4" type="video/mp4">
+                <video class="videoElem" id="{{id}}__video" data-src="assets/images/{{video}}.mp4" data-srcmobile="assets/images/{{video}}_mobile.mp4" muted="true" autobuffer="true" preload="auto" playsinline="true">
+                    <source id="laptopSrc" src="assets/images/{{video}}.mp4" type="video/mp4">
                     <img src="assets/images/placeholder.jpg" title="Your browser does not support the HTML5 video. Please update the browser to view the content.">
                 </video>
             {{/if}}
@@ -31,6 +31,14 @@
                         {{/each}}
                     </div>
                 {{/if}}
+
+                {{#each playbtn}}
+                    <button class="card--btn btn--secondary overline slider_play_btn" id="{{../id}}__PlayBtn">
+                        <p class="btn__p">
+                            {{{text}}}
+                        </p>
+                    </button>
+                {{/each}}
                 {{# ifEquals id 'visual-99'}}
                     <div class="visual-info-tip" id="visual-info-tip"></div>
                     <div class="btn--div">

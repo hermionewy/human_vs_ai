@@ -7,6 +7,7 @@ import speech from './speech';
 import rightAnswers from './rightAnswers';
 import startScroll from './startScroll';
 import music from './music';
+import visual from './visual';
 
 const journey = [];
 const $opening = select('#start-1');
@@ -63,13 +64,18 @@ window.addEventListener('hashchange', () => {
 		darkModeOff();
 		break;
 	case 'speech-text-5':
+		darkModeOff();
 		clearTimeout(speechOutTimer);
 		break;
 	case 'speech-text-6':
+		darkModeOn();
 		speechOutTimer = setTimeout(()=>{
 			loadCurrentSlide('speech-text-7');
 			location.hash = 'speech-text-7';
-		}, 15000);
+		}, 350000);
+		break;
+	case 'speech-text-7':
+		darkModeOff();
 		break;
 
 	case 'visual-99': // guess card
@@ -91,7 +97,10 @@ window.addEventListener('hashchange', () => {
 		break;
 
 	}
-
+	visual.init('visual-2');
+	visual.init('visual-3');
+	visual.init('visual-4');
+	visual.init('visual-5');
 
 	speech.init('#speech-text-2');
 	speech.init('#speech-text-4');

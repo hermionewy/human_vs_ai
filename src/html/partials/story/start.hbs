@@ -3,9 +3,11 @@
         <div class="card-sci" hidden id={{id}}>
             <div class="card-sci-start-img-container">
                 <div class="start-img-container sticky">
-                    {{#each startImg}}
-                        <img data-src="assets/images/{{value}}" src="assets/images/{{value}}" class="card-sci-img" id="step-{{@index}}-img">
-                    {{/each}}
+                        {{#each startImg}}
+                        <div class="start-img-inner">
+                            <img data-src="assets/images/{{value}}" src="assets/images/{{value}}" class="card-sci-img" id="step-{{@index}}-img">
+                        </div>
+                        {{/each}}
                 </div>
             </div>
             <div class="card-sci__right">
