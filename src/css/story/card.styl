@@ -49,7 +49,8 @@
 
   .card-sci__right
     padding 0rem 2rem
-    max-width $column-width
+    //max-width $column-width
+    z-index 2
     .card--btn
       min-width 8rem
     .card-sci__title
@@ -68,7 +69,7 @@
   .hero__media
     width 100%
     display inline
-    padding 0
+    //padding 0 0.5rem
     +mq('bp-4')
       width 50%
       margin auto 0
@@ -76,9 +77,9 @@
       width 50%
       display block
 
-
     & img
-      width 100%
+      width auto
+      max-width 100%
       margin auto
       max-height 70vh
 
@@ -89,9 +90,9 @@
         max-height 72vh
 
       +mq('bp-6')
-        min-width 70%
-        max-width 85%
-        width auto
+        //min-width 70%
+        //max-width 85%
+        //width 100
         height auto
         max-height 80vh
 
@@ -118,7 +119,8 @@
       font-size 1rem
       font-weight $font-weight-bold
       font-family $font-family-moderat
-
+    & .card__content p a
+      color $icon-color
 
 
   .hero__inner

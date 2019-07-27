@@ -66,6 +66,7 @@ window.addEventListener('hashchange', () => {
 	case 'speech-text-5':
 		darkModeOff();
 		clearTimeout(speechOutTimer);
+		document.getElementById('speech_iframe_video').contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
 		break;
 	case 'speech-text-6':
 		darkModeOn();
@@ -75,6 +76,9 @@ window.addEventListener('hashchange', () => {
 		}, 350000);
 		break;
 	case 'speech-text-7':
+	    console.log('speech iframe contentWindow', document.getElementById('speech_iframe_video').contentWindow);
+	    console.log('speech iframe by tagname', document.getElementsByTagName('iframe')[0].contentWindow);
+		document.getElementById('speech_iframe_video').contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
 		darkModeOff();
 		break;
 

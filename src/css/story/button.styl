@@ -16,17 +16,30 @@ a.card-sci-start-btn
   flex 1
   &:hover
     text-decoration none
+    & img
+      transition 0.5s ease-in-out
+      transform: scale(1.03)
   & .btn__p
     color $icon-color
     text-align center
+    max-width 12rem
+    margin 0.2rem auto
+    font-weight bold
     set-type-size('medium', true)
   & img
     width 150px
     height 150px
     margin auto
+    transform: scale(1.00)
     +mq('bp-4')
       width 200px
       height 200px
+    +mq('bp-5')
+      width 250px
+      height 250px
+    +mq('bp-7')
+      width 300px
+      height 300px
 
 .btn--primary
   background-color #e05b43
@@ -179,3 +192,4 @@ a.card-sci-start-btn
   90%{    background-color:transparent; }
   100%{   background-color: $icon-color; }
 }
+

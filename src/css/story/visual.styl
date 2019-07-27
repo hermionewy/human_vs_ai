@@ -4,3 +4,12 @@
   &.active
     margin 0.5rem 0rem
     display inline-block
+
+#visual-0, #music-1, #speech-text-0
+  img
+    animation 1s imageScale ease-in-out
+
+@keyframes imageScale{
+  from { transform: scale(2);}
+  to { transform: scale(1); }
+}

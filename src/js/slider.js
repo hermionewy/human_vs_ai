@@ -12,6 +12,10 @@ const sliderValue ={
 	'music-8__slider-1':0.5
 };
 function init() {
+	changeSpotifyRing('music-5__sliderContainer-0');
+	changeSpotifyRing('music-5__sliderContainer-1');
+	changeSpotifyRing('music-8__sliderContainer-0');
+	changeSpotifyRing('music-8__sliderContainer-1');
 	sliderArr.forEach( (slider, idx)=>{
 		const rangeslider = document.getElementById(slider);
 	    if([2, 3, 6, 7].indexOf(idx)>-1) {
@@ -34,12 +38,14 @@ function changeInput() {
 	console.log('relatedID: ', relatedID );
 	console.log('parentID: ', parentID );
 	document.getElementById( relatedID ).value = rangeValue;
+
+}
+
+function changeSpotifyRing( parentID ) {
 	const spotifyRing = d3.select(`#${ parentID }`).select('.slider-ring');
-	const spotifyScore = +(spotifyRing.attr('data-attr'))*90+3+'%';
+	const spotifyScore = `${+(spotifyRing.attr('data-attr'))*90+3}%`;
 	spotifyRing.style('left', spotifyScore);
 	console.log('@@@@@@@@@@@spotify Score: ', spotifyScore);
-
-
 }
 
 export default {init}

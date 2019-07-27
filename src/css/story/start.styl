@@ -1,6 +1,6 @@
 #start-3
   .spacer
-    height 73px
+    height 0.5rem
 #start-1
   position relative
   background-color black
@@ -20,17 +20,18 @@
     .start-img-container
       width 100%
       height auto
-      z-index 1001
       .start-img-inner
         position absolute
-        top 0px
-        left 0px
+        //top 0px
+        width 100%
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%)
         .card-sci-img
           position relative
-          top 0
+          //top 0
           opacity 0
-          transition 1.5s ease-in-out
-          z-index 2000
+          transition 1s ease-in-out
           &.active
             opacity 1
 
@@ -42,7 +43,7 @@
   .start1-step
     margin-top 65vh
     margin-bottom 15vh
-    background-color black
+    background-color rgba(0,0,0,0.6)
     color $white
     +mq('bp-4')
       margin-top 40vh
@@ -50,6 +51,8 @@
     .card-sci-start__p
       text-align center
       font-family $font-family-grifo-bold
+      max-width $column-width
+      margin auto
       set-type-size('large', true)
       opacity 0.3
       transition 1.5s ease-in-out
