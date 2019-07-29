@@ -2,10 +2,10 @@ function init() {
 	const btns =[
 		'music-4__PlayBtn-0',
 		'music-4__PlayBtn-1',
-		'music-7__PlayBtn-1',
+		'music-7__PlayBtn-0',
 		'music-7__PlayBtn-1',
 	];
-	const btnsCount ={ 'music-4__PlayBtn-0': 0, 'music-4__PlayBtn-1': 0, 'music-7__PlayBtn-1': 0, 'music-7__PlayBtn-1':0 };
+	const btnsCount ={ 'music-4__PlayBtn-0': 0, 'music-4__PlayBtn-1': 0, 'music-7__PlayBtn-0': 0, 'music-7__PlayBtn-1':0 };
 	const audios =[
 		'music-4__audio-0',
 		'music-4__audio-1',

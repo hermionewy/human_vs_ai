@@ -2,8 +2,6 @@
   display inline-table
   font-family $font-family-moderat
 
-
-
 .opening--btn, .card--btn
   cursor pointer
   border: 0;
@@ -149,25 +147,25 @@ a.card-sci-start-btn
       pointer-events none
       color white
       position relative
-      &:after
-        content: '✔'
-        color white
-        position absolute
-        bottom 0px
-        right 0px
+      //&:after
+      //  content: '✔'
+      //  color white
+      //  position absolute
+      //  bottom 0px
+      //  right 0px
 
     &.checked-wrong
       background-color $wrong-guess !important
-      color black
+      color white
       pointer-events none
       position relative
       //opacity 0.7
-      &:after
-        content: '✘'
-        color white
-        position absolute
-        bottom 0px
-        right 0px
+      //&:after
+      //  content: '✘'
+      //  color white
+      //  position absolute
+      //  bottom 0px
+      //  right 0px
 
     &.active
       color white

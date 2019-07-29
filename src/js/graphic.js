@@ -55,6 +55,9 @@ window.addEventListener('hashchange', () => {
 	case 'start-1':
 		journey.length=0;
 		document.title = 'Interactive: How we know what we know';
+		const cardImgs = d3.select('#start-1').selectAll('.card-sci-img');
+		cardImgs.classed('active', false);
+		d3.select('#step-1-img').classed('active', true);
 		darkModeOn();
 		break;
 	case 'start-2':

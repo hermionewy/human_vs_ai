@@ -6,19 +6,17 @@ function init() {
 	console.log('init');
 	const startImgHeight = document.getElementById('step-0-img').clientHeight;
 	console.log('height of image: ', startImgHeight);
-	d3.select('.start-img-container').style('height', startImgHeight+'px');
+	d3.select('.start-img-container').style('height', `${startImgHeight}px`);
 	enterView({
 		selector: stepSel.nodes(),
 		offset: 0.2,
 		enter: el => {
 			const index = +d3.select(el).attr('data-index');
-			console.log('enter', index);
 			switchIndex( index );
 		},
 		exit: el => {
 			let index = +d3.select(el).attr('data-index');
 			index = Math.max(0, index - 1);
-			console.log('exit', index);
 			switchIndex( index );
 		}
 	});
@@ -33,7 +31,7 @@ function switchIndex(idx) {
 	d3.selectAll('.card-sci-start__p').classed('active', false);
 	d3.select(`#step-${idx}`).select('.card-sci-start__p').classed('active', true);
 	const cardImgs = d3.select('#start-1').selectAll('.card-sci-img');
-    cardImgs.classed('active', false);
+	cardImgs.classed('active', false);
 	d3.select(`#step-${idx+1}-img`).classed('active', true);
 	//
 
