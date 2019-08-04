@@ -17,7 +17,7 @@
                 </div>
             {{/if}}
             {{#if video}}
-                <video id="{{id}}-video" data-src="{{video}}" data-srcmobile="{{video}}" playsinline="true" autoplay="true" muted="true" loop="true">
+                <video id="{{id}}-video" data-src="{{video}}" data-srcmobile="{{video}}" playsinline="true" autoplay="true" muted="true" loop="false">
                     <source src="{{video}}" type="video/mp4">
                 </video>
             {{/if}}
@@ -70,7 +70,7 @@
                                 {{/if}}
                                 <div class="slider" id="{{../id}}__sliderContainer-{{@index}}">
                                     {{#if spotify}}
-                                        <span class="slider-ring" data-attr="{{spotify}}">@@include('circle.svg') <sup>Spotify</sup></span>
+                                        <span class="slider-ring" data-attr="{{spotify}}">@@include('circle.svg')</span>
                                     {{/if}}
                                     <input type="range" min="0" max="1" value="0.5" step="0.01" class="inputSlider" id="{{../id}}__slider-{{@index}}">
                                     {{> story/slider }}
