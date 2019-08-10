@@ -58,6 +58,7 @@ window.addEventListener('hashchange', () => {
 		const cardImgs = d3.select('#start-1').selectAll('.card-sci-img');
 		cardImgs.classed('active', false);
 		d3.select('#step-1-img').classed('active', true);
+		startScroll.switchIndex(0);
 		darkModeOn();
 		break;
 	case 'start-2':
