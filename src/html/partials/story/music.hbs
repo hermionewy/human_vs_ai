@@ -17,14 +17,14 @@
                 </div>
             {{/if}}
             {{#if video}}
-                <video id="{{id}}-video" data-src="{{video}}" data-srcmobile="{{video}}" playsinline="true" autoplay="true" muted="true" loop="false">
+                <video id="{{id}}-video" data-src="{{video}}" data-srcmobile="{{video}}" playsinline="true" autoplay="true" muted="true">
                     <source src="{{video}}" type="video/mp4">
                 </video>
             {{/if}}
         </div>
         <div class="hero__content">
             <div class="card__content">
-                <a href="#start-1" class="card--btn btn--primary overline">
+                <a href="#" class="card--btn btn--primary overline">
                     <p class="btn__p">YOUR BRAIN VS. AI</p>
                 </a>
                 <h2 class="title__game">{{{title}}}</h2>
@@ -85,7 +85,9 @@
                         {{/each}}
                     </div>
                 {{/ifNotEquals}}
-
+                <a href="#start-3" class="card--btn btn--secondary overline">
+                    <p class="btn__p">Return to start</p>
+                </a>
                 {{#if social}}
                     <div class="share-note">
                         <p>Invite others to try…</p>

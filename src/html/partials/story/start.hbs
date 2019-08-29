@@ -1,6 +1,11 @@
 {{#each copy.start}}
     {{#ifEquals id 'start-1'}}
         <div class="card-sci" hidden id={{id}}>
+            <div class="scroll_down">
+                <!--<a href="#step-1">-->
+                    <p class="btn__p"><span>&#8595;</span><br/>SCROLL DOWN</p>
+                <!--</a>-->
+            </div>
             <div class="card-sci-start-img-container">
                 <div class="start-img-container sticky">
                         {{#each startImg}}
@@ -16,32 +21,10 @@
                         <p class="card-sci-start__p" >{{{value}}}</p>
                     </div>
                 {{/each}}
-                <!--{{#each btn}}-->
-                    <!--<a href="#{{next}}" class="card--btn btn--secondary overline" data-next ={{next}} >-->
-                        <!--<p class="btn__p">{{{text}}}</p>-->
-                    <!--</a>-->
-                <!--{{/each}}-->
             </div>
         </div>
     {{/ifEquals}}
-    <!--{{#ifEquals id 'start-2'}}-->
-        <!--<div class="card-sci" hidden id={{id}}>-->
-            <!--<div class="card-sci__left">-->
-                <!--<img data-src="assets/images/{{img}}" src="assets/images/placeholder.jpg" class="card-sci-img" >-->
-            <!--</div>-->
-            <!--<div class="card-sci__right">-->
-                <!--<h3 class="card-sci__title">{{title}}</h3>-->
-                <!--{{#each text}}-->
-                    <!--<p class="card-sci-textContainer__p">{{{value}}}</p>-->
-                <!--{{/each}}-->
-                <!--{{#each btn}}-->
-                    <!--<a href="#{{next}}" class="card--btn btn--secondary overline" data-next ={{next}} >-->
-                        <!--<p class="btn__p">{{{text}}}</p>-->
-                    <!--</a>-->
-                <!--{{/each}}-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--{{/ifEquals}}-->
+
     {{#ifEquals id 'start-3'}}
         <div class="card-sci" hidden id={{id}}>
             <!--<h1 class="spacer">{{title}}</h1>-->

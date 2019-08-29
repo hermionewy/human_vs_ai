@@ -13,7 +13,6 @@ function init(slideID) {
 		} else {
 			d3.select(node).classed('checked-wrong', true);
 		}
-
 	})
 
 }

@@ -112,12 +112,15 @@
       display block
       //set-type-size('medium', true)
 
-    & .card__content p span
-      font-size 1rem
-      font-weight $font-weight-bold
-      font-family $font-family-moderat
-    & .card__content p a
-      color $icon-color
+    & .card__content
+        .btn--primary:first-child
+          pointer-events none
+        p span
+          font-size 1rem
+          font-weight $font-weight-bold
+          font-family $font-family-moderat
+        p a
+          color $icon-color
 
 
   .hero__inner
