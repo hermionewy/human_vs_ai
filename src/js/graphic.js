@@ -50,7 +50,7 @@ window.addEventListener('hashchange', () => {
 		loadCurrentSlide(hash);
 		journey.push(hash);
 	}
-	const cowbell = document.getElementById('speech-text-6-video');
+	const cowbell = document.getElementById('speech-6-video');
 	switch (hash) {
 	case 'start-1':
 		journey.length=0;
@@ -62,36 +62,36 @@ window.addEventListener('hashchange', () => {
 		darkModeOn();
 		break;
 	case 'start-2':
-		darkModeOn();
-		break;
-	case 'start-3':
 		darkModeOff();
 		break;
-	case 'speech-text-5':
+	case 'speech-5':
 		darkModeOff();
 		videoPause(cowbell);
 		// clearTimeout(speechOutTimer);
 		// document.getElementById('speech_iframe_video').contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
 		break;
-	case 'speech-text-6':
+	case 'speech-6':
 		videoPause(cowbell);
 		darkModeOn();
 		cowbell.controls = true;
 		cowbell.loop = false;
 		cowbell.muted = false;
 		break;
-	case 'speech-text-7':
+	case 'speech-7':
 		darkModeOff();
 		videoPause(cowbell);
 		cowbell.currentTime = 0;
 		// how to mute an iframe
 		// document.getElementById('speech_iframe_video').contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
 		break;
-
+	case 'music-10':
+		const  musicVid = document.getElementById('music-10__video');
+		visualVid(musicVid);
+		break;
 	case 'visual-10': // guess card
 		const visualVid = document.getElementById('visual-10__video');
-		visualVid.currentTime = 0;
-		visualVid.play();
+		videoPlay(visualVid);
+		break;
 		// const preHash=journey[journey.length-2];
 		// d3.select(`#${hash}`).select('#return-visual').attr('href', `#${preHash}`);
 		// const preImgSrc = getPreImgSrc(preHash);
@@ -115,9 +115,9 @@ window.addEventListener('hashchange', () => {
 	visual.init('visual-4');
 	visual.init('visual-5');
 
-	speech.init('#speech-text-2');
-	speech.init('#speech-text-4');
-	speech.init('#speech-text-5');
+	speech.init('#speech-2');
+	speech.init('#speech-4');
+	speech.init('#speech-5');
 
 
 	finalChapter.forEach(fc=>{
@@ -128,6 +128,11 @@ window.addEventListener('hashchange', () => {
 	window.AIJourney = journey;
 
 });
+
+function videoPlay(vid) {
+	vid.currentTime = 0;
+	vid.play();
+}
 
 function videoPause(vid) {
 	vid.pause();
@@ -152,14 +157,13 @@ function getPreImgSrc(preHash) {
 		.attr('data-src');
 }
 function darkModeOn() {
-    console.log('darkMode is on: ');
 	d3.select('.article').classed('darkMode', true);
 	d3.select('header').classed('darkMode', true);
-	d3.select('#speech-text-6').select('.returnToStart').classed('darkMode', true)
+	d3.select('#speech-6').select('.returnToStart').classed('darkMode', true)
 }
 function darkModeOff() {
 	d3.select('.article').classed('darkMode', false);
 	d3.select('header').classed('darkMode', false);
-    d3.select('#speech-text-6').select('.returnToStart').classed('darkMode', false)
+	d3.select('#speech-6').select('.returnToStart').classed('darkMode', false)
 }
 export default { init, resize, darkModeOn, darkModeOff };

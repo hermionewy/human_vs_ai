@@ -1,21 +1,21 @@
 import debounce from 'lodash.debounce';
 
-const sliderArr = ['music-4__slider-0', 'music-4__slider-1', 'music-5__slider-0', 'music-5__slider-1', 'music-7__slider-0', 'music-7__slider-1', 'music-8__slider-0', 'music-8__slider-1'];
+const sliderArr = ['music-3__slider-0', 'music-3__slider-1', 'music-4__slider-0', 'music-4__slider-1', 'music-6__slider-0', 'music-6__slider-1', 'music-7__slider-0', 'music-7__slider-1'];
 const sliderValue ={
+	'music-3__slider-0': 0.5,
+	'music-3__slider-1': 0.5,
 	'music-4__slider-0': 0.5,
 	'music-4__slider-1': 0.5,
-	'music-5__slider-0': 0.5,
-	'music-5__slider-1': 0.5,
+	'music-6__slider-0': 0.5,
+	'music-6__slider-1': 0.5,
 	'music-7__slider-0': 0.5,
-	'music-7__slider-1': 0.5,
-	'music-8__slider-0': 0.5,
-	'music-8__slider-1':0.5
+	'music-7__slider-1':0.5
 };
 function init() {
-	changeSpotifyRing('music-5__sliderContainer-0');
-	changeSpotifyRing('music-5__sliderContainer-1');
-	changeSpotifyRing('music-8__sliderContainer-0');
-	changeSpotifyRing('music-8__sliderContainer-1');
+	changeSpotifyRing('music-4__sliderContainer-0');
+	changeSpotifyRing('music-4__sliderContainer-1');
+	changeSpotifyRing('music-7__sliderContainer-0');
+	changeSpotifyRing('music-7__sliderContainer-1');
 	sliderArr.forEach( (slider, idx)=>{
 		const rangeslider = document.getElementById(slider);
 	    if([2, 3, 6, 7].indexOf(idx)>-1) {

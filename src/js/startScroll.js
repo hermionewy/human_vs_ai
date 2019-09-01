@@ -35,7 +35,7 @@ function switchIndex(idx) {
 
 	if(idx==8){
 	    setTimeout(()=>{
-			window.location.hash = '#start-3'
+			window.location.hash = '#start-2'
 		}, 800)
 	}
 	// const imgPath = `assets/images/start/animation/glitche_face_v2_${  idx+3 }.jpg`;
