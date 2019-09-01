@@ -50,7 +50,7 @@ window.addEventListener('hashchange', () => {
 		loadCurrentSlide(hash);
 		journey.push(hash);
 	}
-
+	const cowbell = document.getElementById('speech-text-6-video');
 	switch (hash) {
 	case 'start-1':
 		journey.length=0;
@@ -69,40 +69,45 @@ window.addEventListener('hashchange', () => {
 		break;
 	case 'speech-text-5':
 		darkModeOff();
-		clearTimeout(speechOutTimer);
-		document.getElementById('speech_iframe_video').contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+		videoPause(cowbell);
+		// clearTimeout(speechOutTimer);
+		// document.getElementById('speech_iframe_video').contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
 		break;
 	case 'speech-text-6':
+		videoPause(cowbell);
 		darkModeOn();
-		speechOutTimer = setTimeout(()=>{
-			loadCurrentSlide('speech-text-7');
-			location.hash = 'speech-text-7';
-		}, 350000);
+		cowbell.controls = true;
+		cowbell.loop = false;
+		cowbell.muted = false;
 		break;
 	case 'speech-text-7':
-	    console.log('speech iframe contentWindow', document.getElementById('speech_iframe_video').contentWindow);
-	    console.log('speech iframe by tagname', document.getElementsByTagName('iframe')[0].contentWindow);
-		document.getElementById('speech_iframe_video').contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
 		darkModeOff();
+		videoPause(cowbell);
+		cowbell.currentTime = 0;
+		// how to mute an iframe
+		// document.getElementById('speech_iframe_video').contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
 		break;
 
-	case 'visual-99': // guess card
-		const preHash=journey[journey.length-2];
-		d3.select(`#${hash}`).select('#return-visual').attr('href', `#${preHash}`);
-		const preImgSrc = getPreImgSrc(preHash);
-		console.log('Hey, here is preImgSRC: ', preHash, preImgSrc);
-		const allImgNodes = d3.select(`#${hash}`)
-			.select('img')
-			.attr('src', preImgSrc);
-		if(window.AIUserChoice.length>0){
-			const guessTipOne = d3.select(`#${hash}`).select('.card__content__p').select('span');
-			if (window.AIUserChoice.length==1) {
-				guessTipOne.text('Please select another two objects.')
-			} else {
-				guessTipOne.text('Please select another one object.')
-			}
-		}
-		break;
+	case 'visual-10': // guess card
+		const visualVid = document.getElementById('visual-10__video');
+		visualVid.currentTime = 0;
+		visualVid.play();
+		// const preHash=journey[journey.length-2];
+		// d3.select(`#${hash}`).select('#return-visual').attr('href', `#${preHash}`);
+		// const preImgSrc = getPreImgSrc(preHash);
+		// console.log('Hey, here is preImgSRC: ', preHash, preImgSrc);
+		// const allImgNodes = d3.select(`#${hash}`)
+		// 	.select('img')
+		// 	.attr('src', preImgSrc);
+		// if(window.AIUserChoice.length>0){
+		// 	const guessTipOne = d3.select(`#${hash}`).select('.card__content__p').select('span');
+		// 	if (window.AIUserChoice.length==1) {
+		// 		guessTipOne.text('Please select another two objects.')
+		// 	} else {
+		// 		guessTipOne.text('Please select another one object.')
+		// 	}
+		// }
+		// break;
 
 	}
 	visual.init('visual-2');
@@ -124,6 +129,11 @@ window.addEventListener('hashchange', () => {
 
 });
 
+function videoPause(vid) {
+	vid.pause();
+	vid.currentTime = 0;
+}
+
 function loadCurrentSlide(hash) {
 	hideAllCards();
 	showCard(hash);
@@ -142,11 +152,14 @@ function getPreImgSrc(preHash) {
 		.attr('data-src');
 }
 function darkModeOn() {
+    console.log('darkMode is on: ');
 	d3.select('.article').classed('darkMode', true);
 	d3.select('header').classed('darkMode', true);
+	d3.select('#speech-text-6').select('.returnToStart').classed('darkMode', true)
 }
 function darkModeOff() {
 	d3.select('.article').classed('darkMode', false);
 	d3.select('header').classed('darkMode', false);
+    d3.select('#speech-text-6').select('.returnToStart').classed('darkMode', false)
 }
 export default { init, resize, darkModeOn, darkModeOff };

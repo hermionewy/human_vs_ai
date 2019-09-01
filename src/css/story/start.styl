@@ -98,11 +98,16 @@
 .scroll_down
   position fixed
   bottom 2rem
-  left 50%
+  width: 100%
   z-index 100
   color white
   .btn__p
     text-align center
-    color white
+    color white;
+    font-size: 0.7rem;
+    +mq('bp-4')
+      font-size: 0.9rem;
     span
-      font-size: 2rem;
+      font-size: 1.5rem;
+      +mq('bp-4')
+        font-size: 2rem;

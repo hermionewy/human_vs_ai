@@ -190,4 +190,23 @@ a.card-sci-start-btn
   90%{    background-color:transparent; }
   100%{   background-color: $icon-color; }
 }
+.return__container
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 0rem;
+  //+mq('bp-4')
+  //  bottom 1rem;
+
+  a.returnToStart
+    color black
+    border-bottom 1px solid $primary
+    &.darkMode
+      color white
+    & .btn__p
+      font-size: 0.8rem!important
+
+    &:hover
+      color $primary
+      text-decoration none
 
