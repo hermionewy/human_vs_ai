@@ -1,13 +1,13 @@
 {
-	"title": "Interactive: Take an immigrant’s journey",
+	"title": "Interactive: Your brain vs. AI",
 	"description":
-		"I just relived an immigrant’s journey to America via Experience magazine.Try it…",
+		"I just experienced how AI recognizes faces, categorizes the music and predicts autofill. Try it…",
 	"url": "https://expmag.com/",
-	"keywords": "immigrant, experience, gamify journalism, immigration, Ireland, China, Italy, Mexico, El Salvador, Philippines, Nigeria, Iran",
+	"keywords": "AI, cognition, experience, artificial intelligence, facial recognition, music, spotify, playlist, autofill, read your mind, exp mag, data",
 	"imgFacebook":
-		"https://expmag.com/immigrant-experience/assets/social/og-image.jpg",
+		"./assets/social/og-image.jpg",
 	"imgTwitter":
-		"https://expmag.com/immigrant-experience/assets/social/og-image.jpg",
+		"./assets/social/og-image.jpg",
 	"author": {
 		"name": "Yan Wu",
 		"url": "https://twitter.com/expmag",

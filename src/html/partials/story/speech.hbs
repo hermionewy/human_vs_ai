@@ -11,14 +11,8 @@
                     {{/if}}
                 </figure>
             {{/if}}
-            {{#if embed}}
-                <div class="videoContainer">
-                    <iframe id="speech_iframe_video" width="560" height="315" src="{{embed}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <!--<iframe width="560" height="315" src="{{embed}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-                </div>
-            {{/if}}
             {{#if video}}
-                <video class="videoElem" id="{{id}}-video" data-src="{{video}}" data-srcmobile="{{video}}" playsinline="true" autoplay="true" muted="true" loop="true">
+                <video class="videoElem" id="{{id}}-video" data-src="{{video}}" data-srcmobile="{{video}}" playsinline="true">
                     <source src="{{video}}" type="video/mp4">
                 </video>
             {{/if}}
@@ -39,18 +33,24 @@
                         {{/each}}
                     </div>
                 {{/if}}
-                {{# ifEquals id 'speech-99'}}
+                {{# ifEquals id 'speech-5'}}
                     <div class="speech-info-tip" id="speech-info-tip"></div>
                     <div class="btn--div">
                         {{#each btn}}
-                            <a class="card--btn btn--secondary overline guessbtn-speech" id="{{id}}" data-next ={{next}} >
-                                <p class="btn__p">{{{text}}}</p>
-                            </a>
+                            {{#if next}}
+                                <a class="card--btn btn--secondary overline guessbtn-speech" id="{{../id}}__btn-{{@index}}" href="#{{next}}" >
+                                    <p class="btn__p">{{{text}}}</p>
+                                </a>
+                            {{else}}
+                                <a class="card--btn btn--secondary overline guessbtn-speech" id="{{../id}}__btn-{{@index}}" >
+                                    <p class="btn__p">{{{text}}}</p>
+                                </a><br/>
+                            {{/if}}
                         {{/each}}
                     </div>
                 {{/ifEquals}}
 
-                {{#ifNotEquals id 'speech-99'}}
+                {{#ifNotEquals id 'speech-5'}}
                     <div class="btn--div">
                         {{#each btn}}
                             <a href="#{{next}}" class="card--btn btn--secondary overline" data-next ={{next}} >
@@ -74,11 +74,11 @@
                     </ul>
                 {{/if}}
             </div>
-        </div>
-        <div class="return__container">
-            <a href="#start-2" class="card--btn overline returnToStart">
-                <p class="btn__p">Return to start</p>
-            </a>
+            <div class="return__container">
+                <a href="#start-2" class="card--btn overline returnToStart">
+                    <p class="btn__p">&#8592; Return to start</p>
+                </a>
+            </div>
         </div>
     </div>
 {{/each}}

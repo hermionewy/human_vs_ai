@@ -13,11 +13,12 @@ const journey = [];
 const $opening = select('#start-1');
 const finalChapter = ['visual-7'];
 const allRightAnswers = rightAnswers();
+const speechVid = document.getElementById('speech-7-video');
 // let currentPerson;
 let speechOutTimer;
 const {hideAllCards} = card;
 const {showCard} = card;
-
+const cowbellVid = document.getElementById('speech-5-video');
 function resize() {}
 
 function init() {
@@ -64,25 +65,17 @@ window.addEventListener('hashchange', () => {
 	case 'start-2':
 		darkModeOff();
 		break;
-	case 'speech-5':
-		darkModeOff();
-		videoPause(cowbell);
-		// clearTimeout(speechOutTimer);
-		// document.getElementById('speech_iframe_video').contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+	case 'speech-4':
+		cowbellVid.pause();
+		cowbellVid.currentTime = 0;
 		break;
-	case 'speech-6':
-		videoPause(cowbell);
-		darkModeOn();
-		cowbell.controls = true;
-		cowbell.loop = false;
-		cowbell.muted = false;
+	case 'speech-5':
+		d3.select('#speech-5__btn-1').classed('active', false);
+		d3.select('#speech-5').select('.hero__img').classed('hide', false);
+		d3.select('#speech-5').select('.videoElem').classed('show', false);
 		break;
 	case 'speech-7':
-		darkModeOff();
-		videoPause(cowbell);
-		cowbell.currentTime = 0;
-		// how to mute an iframe
-		// document.getElementById('speech_iframe_video').contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+		videoPlay(speechVid);
 		break;
 	case 'music-10':
 		const  musicVid = document.getElementById('music-10__video');
@@ -159,11 +152,9 @@ function getPreImgSrc(preHash) {
 function darkModeOn() {
 	d3.select('.article').classed('darkMode', true);
 	d3.select('header').classed('darkMode', true);
-	d3.select('#speech-6').select('.returnToStart').classed('darkMode', true)
 }
 function darkModeOff() {
 	d3.select('.article').classed('darkMode', false);
 	d3.select('header').classed('darkMode', false);
-	d3.select('#speech-6').select('.returnToStart').classed('darkMode', false)
 }
 export default { init, resize, darkModeOn, darkModeOff };

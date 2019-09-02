@@ -195,16 +195,31 @@ a.card-sci-start-btn
   width: 100%;
   text-align: center;
   bottom: 0rem;
+  max-width 24rem
+  margin 0 auto 2rem auto
+  set-type-size('small', true)
+  +mq('bp-4')
+    margin auto
+    max-width 30rem
+    set-type-size('root', true)
+  +mq('bp-5')
+    width 50%
+    max-width 33rem
+    display block
+
   //+mq('bp-4')
   //  bottom 1rem;
 
   a.returnToStart
-    color black
-    border-bottom 1px solid $primary
+    color $gray
+    //border-bottom 1px solid $primary
     &.darkMode
       color white
     & .btn__p
-      font-size: 0.8rem!important
+      font-size: 0.6rem!important
+      text-transform uppercase
+      +mq('bp-5')
+        font-size: 0.7rem!important
 
     &:hover
       color $primary

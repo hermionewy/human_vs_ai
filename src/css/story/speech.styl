@@ -5,9 +5,25 @@
     //&.active
     //  opacity 1
     //  pointer-events auto
-#speech-6
-  .hero__content
-    z-index 100
 #speech-3 .hero__media
   figure img
     width 80%
+
+#speech-5
+  .hero__img
+    display inline-block
+    &.hide
+      display none
+  .videoElem
+    display none
+    &.show
+      display inline-block
+
+  #speech-5__btn-1
+    opacity 0.5
+    pointer-events none
+    &.active
+      opacity 1
+      pointer-events auto
+
+

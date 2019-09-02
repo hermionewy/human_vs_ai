@@ -1,11 +1,6 @@
 {{#each copy.start}}
     {{#ifEquals id 'start-1'}}
         <div class="card-sci" hidden id={{id}}>
-            <div class="scroll_down">
-                <!--<a href="#step-1">-->
-                    <p class="btn__p"><span>&#8595;</span><br/>SCROLL DOWN</p>
-                <!--</a>-->
-            </div>
             <div class="card-sci-start-img-container">
                 <div class="start-img-container sticky">
                         {{#each startImg}}
@@ -16,6 +11,9 @@
                 </div>
             </div>
             <div class="card-sci__right">
+                <div class="scroll_down">
+                    <p class="btn__p"><span>&#8595;</span><br/>SCROLL DOWN</p>
+                </div>
                 {{#each step}}
                     <div class="start1-step" id="step-{{@index}}" data-index="{{@index}}">
                         <p class="card-sci-start__p" >{{{value}}}</p>
