@@ -94,9 +94,11 @@
 .scroll_down
   position fixed
   bottom 2rem
-  width: calc( 50% - 4rem )
+  width: calc(100% - 5rem)
   z-index 100
   color white
+  +mq('bp-4')
+    width: calc( 50% - 4rem )
   .btn__p
     text-align center
     color white;
