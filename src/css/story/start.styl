@@ -68,9 +68,11 @@
       font-family $font-family-grifo-bold
       max-width $column-width
       margin auto
-      set-type-size('large', true)
       opacity 0.3
       transition 1.5s ease-in-out
+      set-type-size('large', true)
+      +mq('bp-4')
+        font-size 30px
       &.active
         opacity 1
 
@@ -86,7 +88,9 @@
       background-color black
       p
         color $white
-
+#step-1
+  min-height 1rem
+  opacity:0
 #step-8
   height 100vh
   background-color rgba(0, 0, 0, 0)!important
@@ -109,3 +113,21 @@
       font-size: 1.5rem;
       +mq('bp-4')
         font-size: 2rem;
+
+#start-2
+  flex-direction: column
+  .card-sci-btn-container
+    flex-direction column
+    width 100%
+    +mq('bp-4')
+      flex-direction row
+    .card-sci-start-btn .btn__p
+      set-type-size('root', true)
+      margin 1rem auto
+      +mq('bp-4')
+        set-type-size('medium', true)
+  .opening-byline
+    margin 1rem
+    set-type-size('small', true)
+    +mq('bp-4')
+      set-type-size('root', true)

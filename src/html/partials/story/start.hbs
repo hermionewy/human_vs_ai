@@ -26,12 +26,15 @@
     {{#ifEquals id 'start-2'}}
         <div class="card-sci" hidden id={{id}}>
             <!--<h1 class="spacer">{{title}}</h1>-->
+            <div class="card-sci-btn-container">
             {{#each btn}}
                 <a href="#{{next}}" class="card-sci-start-btn" data-next ={{next}} >
                     <img data-src="assets/images/{{img}}" src="assets/images/placeholder.jpg" alt="{{img}}"/>
                     <p class="btn__p">{{{text}}}</p>
                 </a>
             {{/each}}
+            </div>
+            <div class="opening-byline">{{{byline}}}</div>
         </div>
     {{/ifEquals}}
 {{/each}}

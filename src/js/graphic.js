@@ -19,6 +19,8 @@ let speechOutTimer;
 const {hideAllCards} = card;
 const {showCard} = card;
 const cowbellVid = document.getElementById('speech-5-video');
+const  musicVid1 = document.getElementById('music-1-video');
+const  musicVid10 = document.getElementById('music-10-video');
 function resize() {}
 
 function init() {
@@ -74,39 +76,31 @@ window.addEventListener('hashchange', () => {
 		d3.select('#speech-5').select('.hero__img').classed('hide', false);
 		d3.select('#speech-5').select('.videoElem').classed('show', false);
 		break;
+	case 'speech-6':
+		cowbellVid.pause();
+		cowbellVid.currentTime = 0;
+		break;
 	case 'speech-7':
 		videoPlay(speechVid);
 		break;
-	case 'music-10':
-		const  musicVid = document.getElementById('music-10__video');
-		visualVid(musicVid);
+	case 'music-1':
+	    console.log('music-1 play');
+		// videoPlay(musicVid1);
+		musicVid1.play();
 		break;
-	case 'visual-10': // guess card
-		const visualVid = document.getElementById('visual-10__video');
+	case 'music-10':
+		videoPlay(musicVid10);
+		break;
+	case 'visual-9': // guess card
+		const visualVid = document.getElementById('visual-9__video');
 		videoPlay(visualVid);
 		break;
-		// const preHash=journey[journey.length-2];
-		// d3.select(`#${hash}`).select('#return-visual').attr('href', `#${preHash}`);
-		// const preImgSrc = getPreImgSrc(preHash);
-		// console.log('Hey, here is preImgSRC: ', preHash, preImgSrc);
-		// const allImgNodes = d3.select(`#${hash}`)
-		// 	.select('img')
-		// 	.attr('src', preImgSrc);
-		// if(window.AIUserChoice.length>0){
-		// 	const guessTipOne = d3.select(`#${hash}`).select('.card__content__p').select('span');
-		// 	if (window.AIUserChoice.length==1) {
-		// 		guessTipOne.text('Please select another two objects.')
-		// 	} else {
-		// 		guessTipOne.text('Please select another one object.')
-		// 	}
-		// }
-		// break;
-
 	}
 	visual.init('visual-2');
 	visual.init('visual-3');
 	visual.init('visual-4');
 	visual.init('visual-5');
+	visual.init('visual-6');
 
 	speech.init('#speech-2');
 	speech.init('#speech-4');
@@ -123,8 +117,10 @@ window.addEventListener('hashchange', () => {
 });
 
 function videoPlay(vid) {
-	vid.currentTime = 0;
-	vid.play();
+	if(vid){
+		vid.currentTime = 0;
+		vid.play();
+	}
 }
 
 function videoPause(vid) {
