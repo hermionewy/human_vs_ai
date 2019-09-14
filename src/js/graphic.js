@@ -19,7 +19,6 @@ let speechOutTimer;
 const {hideAllCards} = card;
 const {showCard} = card;
 const cowbellVid = document.getElementById('speech-5-video');
-const  musicVid1 = document.getElementById('music-1-video');
 const  musicVid10 = document.getElementById('music-10-video');
 function resize() {}
 
@@ -83,10 +82,6 @@ window.addEventListener('hashchange', () => {
 	case 'speech-7':
 		videoPlay(speechVid);
 		break;
-	case 'music-1':
-	    console.log('music-1 play');
-		// videoPlay(musicVid1);
-		musicVid1.play();
 		break;
 	case 'music-10':
 		videoPlay(musicVid10);
