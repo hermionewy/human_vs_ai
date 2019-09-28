@@ -23,7 +23,10 @@
                 <a href="#" class="card--btn btn--primary overline">
                     <p class="btn__p">YOUR BRAIN VS. AI</p>
                 </a>
-                <h2 class="title__game">{{{title}}}</h2>
+                <h2 class="title__game" id="{{id}}__title">{{{title}}}</h2>
+                {{#if altTitle}}
+                    <h2 class="title__game hidden" id="{{id}}__altTitle">{{{altTitle}}}</h2>
+                {{/if}}
                 {{#each text}}
                     <p class="card__content__p">{{{value}}}</p>
                 {{/each}}

@@ -20,6 +20,8 @@ const {hideAllCards} = card;
 const {showCard} = card;
 const cowbellVid = document.getElementById('speech-5-video');
 const  musicVid10 = document.getElementById('music-10-video');
+const speechVid1 = document.getElementById('speech-1-video');
+const speechVid4 = document.getElementById('speech-4-video');
 function resize() {}
 
 function init() {
@@ -52,7 +54,6 @@ window.addEventListener('hashchange', () => {
 		loadCurrentSlide(hash);
 		journey.push(hash);
 	}
-	const cowbell = document.getElementById('speech-6-video');
 	switch (hash) {
 	case 'start-1':
 		journey.length=0;
@@ -65,13 +66,20 @@ window.addEventListener('hashchange', () => {
 		break;
 	case 'start-2':
 		darkModeOff();
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 		break;
+	case 'speech-1':
+		speechVid1.currentTime = 0.001;
+		speechVid1.play();
 	case 'speech-4':
+		speechVid4.currentTime = 0.001;
+		speechVid4.play();
+		speechVid4.loop = true;
 		cowbellVid.pause();
 		cowbellVid.currentTime = 0;
 		break;
 	case 'speech-5':
-		d3.select('#speech-5__btn-1').classed('active', false);
+		d3.select('#speech-5__btn-1').classed('active', true);
 		d3.select('#speech-5').select('.hero__img').classed('hide', false);
 		d3.select('#speech-5').select('.videoElem').classed('show', false);
 		break;
@@ -86,16 +94,27 @@ window.addEventListener('hashchange', () => {
 	case 'music-10':
 		videoPlay(musicVid10);
 		break;
+	case 'visual-2':
+		visual.init(hash);
+		visual.visualInitStatus(hash, false);
+		break;
+	case 'visual-3':
+		visual.init(hash);
+		visual.visualInitStatus(hash, false);
+		break;
+	case 'visual-4':
+		visual.init(hash);
+		visual.visualInitStatus(hash, false);
+		break;
+	case 'visual-5':
+		visual.init(hash);
+		visual.visualInitStatus(hash, false);
+		break;
 	case 'visual-9': // guess card
 		const visualVid = document.getElementById('visual-9__video');
 		videoPlay(visualVid);
 		break;
 	}
-	visual.init('visual-2');
-	visual.init('visual-3');
-	visual.init('visual-4');
-	visual.init('visual-5');
-	visual.init('visual-6');
 
 	speech.init('#speech-2');
 	speech.init('#speech-4');
@@ -108,8 +127,8 @@ window.addEventListener('hashchange', () => {
 		})
 	});
 	window.AIJourney = journey;
-
 });
+
 
 function videoPlay(vid) {
 	if(vid){
@@ -118,10 +137,6 @@ function videoPlay(vid) {
 	}
 }
 
-function videoPause(vid) {
-	vid.pause();
-	vid.currentTime = 0;
-}
 
 function loadCurrentSlide(hash) {
 	hideAllCards();
