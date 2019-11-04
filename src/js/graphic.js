@@ -106,10 +106,10 @@ window.addEventListener('hashchange', () => {
 		visual.init(hash);
 		visual.visualInitStatus(hash, false);
 		break;
-	case 'visual-5':
-		visual.init(hash);
-		visual.visualInitStatus(hash, false);
-		break;
+	// case 'visual-5':
+	// 	visual.init(hash);
+	// 	visual.visualInitStatus(hash, false);
+	// 	break;
 	case 'visual-9': // guess card
 		const visualVid = document.getElementById('visual-9__video');
 		videoPlay(visualVid);
