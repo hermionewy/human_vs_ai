@@ -71,13 +71,13 @@ window.addEventListener('hashchange', () => {
 	case 'speech-1':
 		speechVid1.currentTime = 0.001;
 		speechVid1.play();
-	case 'speech-4':
-		speechVid4.currentTime = 0.001;
-		speechVid4.play();
-		speechVid4.loop = true;
-		cowbellVid.pause();
-		cowbellVid.currentTime = 0;
-		break;
+	// case 'speech-4':
+	// 	speechVid4.currentTime = 0.001;
+	// 	speechVid4.play();
+	// 	speechVid4.loop = true;
+	// 	cowbellVid.pause();
+	// 	cowbellVid.currentTime = 0;
+	// 	break;
 	case 'speech-5':
 		d3.select('#speech-5__btn-1').classed('active', true);
 		d3.select('#speech-5').select('.hero__img').classed('hide', false);
