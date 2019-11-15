@@ -2,12 +2,12 @@
 	"title": "Interactive: Your brain vs. AI",
 	"description":
 		"Auto-fill. Face recognition. The perfect playlist. Are you smarter than AI?",
-	"url": "https://expmag.com/your-brain-vs-ai",
+	"url": "https://expmag.com/ai-and-your-brain/",
 	"keywords": "AI, cognition, experience, artificial intelligence, facial recognition, music, spotify, playlist, autofill, read your mind, exp mag, data",
 	"imgFacebook":
-		"./assets/social/og-image.jpg",
+		"https://expmag.com/ai-and-your-brain/assets/social/og-image2.jpg",
 	"imgTwitter":
-		"./assets/social/og-image.jpg",
+		"https://expmag.com/ai-and-your-brain/assets/social/og-image2.jpg",
 	"author": {
 		"name": "Yan Wu",
 		"url": "https://twitter.com/expmag",
